@@ -2,7 +2,7 @@
 
 bool Airplane::land(string FlightID, string Runway)
 {
-	if (altitude <= 3000 && Degree_Clearance(heading, Runway))
+	if (altitude <= 3000 && Degree_Clearance(heading, Runway)==true)
 	{
 		//heading,speed,altitude,course
 		Set_Altitude(altitude);
