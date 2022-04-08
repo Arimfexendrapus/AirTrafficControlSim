@@ -23,12 +23,12 @@ bool Airplane::land(string Runway)
 
 }
 
-bool Airplane::takeOff(vector<int> Coordinates, int givenSpeed)
+bool Airplane::takeOff(vector<int> Coordinates)
 {
 	if (/*requirements for takeoff are met*/)
 	{
 		Set_Course(Coordinates);
-		Set_Speed(givenSpeed);
+		Set_Speed(takeoffSpeed);
 	}
 	if (boundForCoordinates == Coordinates) return true;
 	else return false;
