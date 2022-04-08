@@ -29,6 +29,7 @@ bool Airplane::takeOff(vector<int> Coordinates)
 	{
 		Set_Course(Coordinates);
 		Set_Speed(takeoffSpeed);
+		Set_Altitude(takeoffAltitude);
 	}
 	if (boundForCoordinates == Coordinates) return true;
 	else return false;
