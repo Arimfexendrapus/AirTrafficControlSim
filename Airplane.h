@@ -22,7 +22,7 @@ private:
 	string runway;
 public:
 	bool land(string FlightID, string Runway);
-	bool takeOff();
+	bool takeOff(vector<int> Coordinates);
 
 	bool Set_Speed(int Speed);
 	int Get_Speed();

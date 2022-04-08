@@ -2,23 +2,21 @@
 
 bool Airplane::land(string FlightID, string Runway)
 {
-	if (altitude <= 3000 && Degree_Clearance(heading, Runway))
+	if (altitude <= 3000 && Degree_Clearance(heading, Runway)==1)
 	{
-		//heading,speed,altitude,course
-		Set_Altitude(altitude);
-		Set_Heading(heading);
-		Set_Speed(speed);
-		Set_Course(coordinates);
+		Set_Course(Runway.coordinates);
 	}
 
 }
 
-bool Airplane::takeOff()
+bool Airplane::takeOff(vector<int> Coordinates)
 {
-	//heading,speed,altitude
-	Set_Altitude(altitude);
-	Set_Heading(heading);
-	Set_Speed(speed);
+	if (/*requirements for takeoff are met*/)
+	{
+		Set_Course(Coordinates);
+	}
+	if (boundForCoordinates == Coordinates) return true;
+	else return false;
 }
 
 bool Airplane::Set_Speed(int Speed)
