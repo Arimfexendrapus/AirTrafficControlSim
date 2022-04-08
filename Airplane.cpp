@@ -1,29 +1,69 @@
 #include "Airplane.h"
 
-bool Airplane::land(string FlightID, string Runway)
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
+
+bool Airplane::land(string Runway)
 {
 	if (altitude <= 3000 && Degree_Clearance(heading, Runway)==1)
 	{
+		int distance = 0;/*(distance between aircraft and runway)*/
+		int howLong = 0; /*distance / speed */
+		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
+		if (howLong < toDecel)
+		{
+			Set_Speed(0);
+		}
 		Set_Course(Runway.coordinates);
+
 	}
 
 }
 
-bool Airplane::takeOff(vector<int> Coordinates)
+bool Airplane::takeOff(vector<int> Coordinates, int givenSpeed)
 {
 	if (/*requirements for takeoff are met*/)
 	{
 		Set_Course(Coordinates);
+		Set_Speed(givenSpeed);
 	}
 	if (boundForCoordinates == Coordinates) return true;
 	else return false;
 }
 
-bool Airplane::Set_Speed(int Speed)
+bool Airplane::Set_Speed(int givenSpeed)
 {
-	speed = Speed;
-	if (speed == Speed) return true;
-	else return false;
+	while(speed != givenSpeed)
+	{
+		if (speed > givenSpeed)
+		{
+			if (speed - aircraft.acceleration[1] < givenSpeed)
+			{
+				speed = givenSpeed;
+			}
+			else
+			{
+				speed -= aircraft.acceleration[1];
+			}	
+		}
+
+		else if (speed < givenSpeed)
+		{
+			if (speed + aircraft.acceleration[0] > givenSpeed)
+			{
+				speed = givenSpeed;
+			}
+			else
+			{
+				speed += aircraft.acceleration[0];
+			}
+		}
+		sleep(1);
+	}
+	return true;
 }
 
 int Airplane::Get_Speed()
@@ -31,11 +71,36 @@ int Airplane::Get_Speed()
 	return speed;
 }
 
-bool Airplane::Set_Altitude(int Altitutde)
+bool Airplane::Set_Altitude(int givenAltitude)
 {
-	altitude = Altitutde;
-	if (altitude == Altitutde) return true;
-	else return false;
+	while (altitude != givenAltitude)
+	{
+		if (altitude > givenAltitude)
+		{
+			if (altitude - aircraft.climb < givenAltitude)
+			{
+				altitude = givenAltitude;
+			}
+			else
+			{
+				altitude -= aircraft.climb;
+			}
+		}
+
+		else if (altitude < givenAltitude)
+		{
+			if (altitude + aircraft.climb > givenAltitude)
+			{
+				altitude = givenAltitude;
+			}
+			else
+			{
+				altitude += aircraft.climb;
+			}
+		}
+		sleep(1);
+	}
+	return true;
 }
 
 int Airplane::Get_Altitude()

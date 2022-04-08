@@ -21,8 +21,8 @@ private:
 	bool departing;
 	string runway;
 public:
-	bool land(string FlightID, string Runway);
-	bool takeOff(vector<int> Coordinates);
+	bool land(string Runway);
+	bool takeOff(vector<int> Coordinates, int givenSpeed);
 
 	bool Set_Speed(int Speed);
 	int Get_Speed();
