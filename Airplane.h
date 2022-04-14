@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Airspace.h"
+#include "airspace.h"
 #include <string>
 #include <vector>
 
