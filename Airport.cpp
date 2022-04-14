@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-	bool Airport::Degree_Clearance(int planeCoords[], string runway) 
+	bool airport::Degree_Clearance(int planeCoords[], string runway) 
 	{
 		int i = Identify_Runway(runway);
 		refAngle = calculated degrees between planeCoords and runwayEndPoints[i] // cos^-1(a/h) 
@@ -22,14 +22,14 @@ using namespace std;
 		}
 	}
 		
-	bool Airport::Runway_Availability(string runway)
+	bool airport::Runway_Availability(string runway)
 	{
 		int i = Identify_Runway(runway);
 		return runwayAvailable[i];
 
 	}
 	
-	void Airport::Empty_Runway(string runway)
+	void airport::Empty_Runway(string runway)
 	{
 		int i = Identify_Runway(runway);
 		runwayAvailable[i] = true;
@@ -37,21 +37,21 @@ using namespace std;
 		
 	}
 	
-	void Airport::Occupy_Runway(string runway)
+	void airport::Occupy_Runway(string runway)
 	{
 		int i = Identify_Runway(runway);
 		runwayAvailable[i] = false;
 
 	}
 	
-	Nav_Aids Airport::Get_Runway(string runway)
+	nav_aid airport::Get_Runway(string runway)
 	{
 		int i = Identify_Runway(runway);
 		return runwayEndPoints[i];
 
 	}
 	
-	int Airport::Identify_Runway(string runway)
+	int airport::Identify_Runway(string runway)
 	{
 		for(int i = 0; i<runwayEndPoints.length;i++)
 		{
