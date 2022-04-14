@@ -9,8 +9,8 @@ class Airspace
 {
 private:
     vector<string> FlightIDs;
-    vector<Airplane *> Aircraft;
-    vector<Nav_Aids> NavAids; // vector of NavAid Structs
+    vector<airplane *> Aircraft;
+    vector<nav_aid> NavAids; // vector of NavAid Structs
     Airport* Airport_Object;
     string ReturnMessage;
 
@@ -134,7 +134,7 @@ public:
     }
 
     string Land_Aircraft(string FlightID, string runway){
-        Nav_Aids runwayInfo;
+        nav_aid runwayInfo;
         int idx = -1;
         bool ret;
         int coords[2];

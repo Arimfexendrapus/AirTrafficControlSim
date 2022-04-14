@@ -5,17 +5,20 @@
 #include "nav_aid.h"
 #include "airport.h"
 
-class Airspace
+
+
+
+class airspace
 {
 private:
     vector<string> FlightIDs;
     vector<aircraft*> Aircraft;
     vector<nav_aid> NavAids; // vector of NavAid Structs
-    Airport* Airport_Object;
+    airport* Airport_Object;
     string ReturnMessage;
 
 public:
-    Airspace(vector<Airplane*> apVector, Airport* aPort);
+    Airspace(vector<aircraft*> apVector, airport* aPort);
     void Generate_Airplane();
     string Clear_Aircraft(string FlightID, string NavPoint, char Directrion);
     string Clear_Aircraft(string FlightID, int heading, char Directrion);
@@ -26,3 +29,4 @@ public:
     Set_Aircraft_Speed(FlightID : string, Speed : int);
     Wait_Aircraft(FlightID : string);
     Abort_Aircraft(FlightID : string);
+}
