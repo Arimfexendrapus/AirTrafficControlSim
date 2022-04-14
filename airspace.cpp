@@ -1,6 +1,9 @@
 // Airspace Class Pseudo Code
 #include <vector>
 #include <string>
+#include "airport.h"
+#include "aircraft.h"
+#include "nav_aid.h"
 
 class Airspace
 {
