@@ -139,14 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Airplane.cpp" />
-    <ClCompile Include="Airport.cpp" />
-    <ClCompile Include="pseudo_Airspace.cpp" />
-    <ClCompile Include="pseudo_User_Interface.cpp" />
+    <ClCompile Include="airplane.cpp" />
+    <ClCompile Include="airport.cpp" />
+    <ClCompile Include="airspace.cpp" />
+    <ClCompile Include="user_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Airplane.h" />
-    <ClInclude Include="Airport.h" />
+    <ClInclude Include="aircraft.h" />
+    <ClInclude Include="airplane.h" />
+    <ClInclude Include="airport.h" />
+    <ClInclude Include="nav_aids.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

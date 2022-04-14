@@ -1,4 +1,4 @@
-#include "Nav_Aids"
+#include "nav_aids.h"
 #include "Airport.h"
 #include <string>
 #include <vector>

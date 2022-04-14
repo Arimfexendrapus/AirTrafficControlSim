@@ -15,24 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Airplane.cpp">
+    <ClCompile Include="airplane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Airport.cpp">
+    <ClCompile Include="airport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pseudo_Airspace.cpp">
+    <ClCompile Include="airspace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pseudo_User_Interface.cpp">
+    <ClCompile Include="user_interface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Airplane.h">
+    <ClInclude Include="airplane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Airport.h">
+    <ClInclude Include="airport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="aircraft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nav_aids.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
