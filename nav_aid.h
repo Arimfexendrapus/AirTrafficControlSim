@@ -1,5 +1,5 @@
 #include <string>
-struct aav_aid{
+struct nav_aid{
 
 	string ID;
 	int coordinates[2];
