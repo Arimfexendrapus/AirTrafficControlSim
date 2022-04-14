@@ -2,10 +2,10 @@
 
 class User_Interface{
 
-    private
+private:
         Airspace* Airspace_Object;
         Airplane_Report* Report_Object;
-    public
+public:
         User_Interface(Airspace* as, Airplane_Report* apr){
             Airspace_Oject = as; // store pointer to the airspace object
             Report_Object = apr; // point to the airplane report object 

@@ -41,5 +41,8 @@
     <ClInclude Include="nav_aids.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="airspace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

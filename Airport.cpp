@@ -1,5 +1,5 @@
 #include "nav_aids.h"
-#include "Airport.h"
+#include "airport.h"
 #include <string>
 #include <vector>
 

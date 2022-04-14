@@ -148,6 +148,7 @@
     <ClInclude Include="aircraft.h" />
     <ClInclude Include="airplane.h" />
     <ClInclude Include="airport.h" />
+    <ClInclude Include="airspace.h" />
     <ClInclude Include="nav_aids.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
