@@ -18,9 +18,18 @@
     <ClCompile Include="Airplane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Airport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pseudo_Airspace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Airplane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Airport.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
