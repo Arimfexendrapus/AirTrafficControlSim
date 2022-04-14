@@ -1,5 +1,6 @@
 // Airspace Class Pseudo Code
 #include <vector>
+#include <string>
 
 class Airspace
 {

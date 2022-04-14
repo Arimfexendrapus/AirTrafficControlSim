@@ -1,3 +1,5 @@
+#include <string>
+
 class User_Interface{
 
     private

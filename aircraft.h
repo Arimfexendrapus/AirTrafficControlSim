@@ -1,3 +1,5 @@
+#include <string>
+
 struct aircraft{
 	string Aircraft_Name;
 	int Aircraft_Acceleration;

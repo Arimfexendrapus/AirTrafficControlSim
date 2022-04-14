@@ -1,3 +1,4 @@
+#include <string>
 struct Nav_Aids{
 
 	string ID;
