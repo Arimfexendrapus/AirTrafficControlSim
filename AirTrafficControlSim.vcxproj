@@ -142,6 +142,7 @@
     <ClCompile Include="Airplane.cpp" />
     <ClCompile Include="Airport.cpp" />
     <ClCompile Include="pseudo_Airspace.cpp" />
+    <ClCompile Include="pseudo_User_Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Airplane.h" />

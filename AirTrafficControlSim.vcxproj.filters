@@ -24,6 +24,9 @@
     <ClCompile Include="pseudo_Airspace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pseudo_User_Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Airplane.h">
