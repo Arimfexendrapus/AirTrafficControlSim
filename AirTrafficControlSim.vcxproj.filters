@@ -38,7 +38,7 @@
     <ClInclude Include="aircraft.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="nav_aids.h">
+    <ClInclude Include="nav_aid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="airspace.h">
