@@ -10,7 +10,7 @@ class Airplane
 {
 private:
 	string flightID;
-	aircraftType aircraft;
+	aircraft aircraft;
 	int speed;
 	int altitude;
 	int heading;
@@ -22,7 +22,7 @@ private:
 	string runway;
 public:
 	bool land(string Runway);
-	bool takeOff(vector<int> Coordinates, int givenSpeed);
+	bool takeOff(vector<int> Coordinates);
 
 	bool Set_Speed(int Speed);
 	int Get_Speed();
@@ -32,7 +32,6 @@ public:
 
 	bool Set_Heading(int Heading);
 	int Get_Heading();
-
 
 	bool Set_Course(vector<int> Coordinates);
 	vector<int> Get_Course();
