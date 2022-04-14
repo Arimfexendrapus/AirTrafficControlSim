@@ -3,6 +3,7 @@
 #include <string>
 #include "aircraft.h"
 #include "nav_aid.h"
+#include "airport.h"
 
 class Airspace
 {
