@@ -1,4 +1,4 @@
-// Airspace Class Pseudo Code
+// airspace class pseudo code
 #include <vector>
 #include <string>
 #include "aircraft.h"
@@ -11,22 +11,23 @@
 class airspace
 {
 private:
-    vector<string> FlightIDs;
+    vector<string> flightids;
     vector<aircraft*> Aircraft;
-    vector<nav_aid> NavAids; // vector of NavAid Structs
-    airport* Airport_Object;
-    string ReturnMessage;
+    vector<nav_aid> navaids; // vector of navaid structs
+    airport* airport_object;
+    string returnmessage;
 
 public:
-    Airspace(vector<aircraft*> apVector, airport* aPort);
-    void Generate_Airplane();
-    string Clear_Aircraft(string FlightID, string NavPoint, char Directrion);
-    string Clear_Aircraft(string FlightID, int heading, char Directrion);
-    string Clear_Aircraft(string FlightID, int altitude);
-    string Land_Aircraft(string FlightID, string runway);
-    string Takeoff_Aircraft(string FlightID);
-    string Hold_Aircraft(string FlightID, string NavPoint);
-    Set_Aircraft_Speed(FlightID : string, Speed : int);
-    Wait_Aircraft(FlightID : string);
-    Abort_Aircraft(FlightID : string);
+    Airspace(vector<aircraft*> apvector, airport* aport);
+    void generate_airplane();
+    string clear_aircraft(string flightID, string navpoint, char directrion);
+    string clear_aircraft(string flightID, int heading, char directrion);
+    string clear_aircraft(string flightID, int altitude);
+    string land_aircraft(string flightID, string runway);
+    string takeoff_aircraft(string flightid);
+    string hold_aircraft(string flightid, string navpoint);
+    set_aircraft_speed(string flightID, int speed);
+    wait_aircraft(string flightID);
+    abort_aircraft(string flightID);
 }
+
