@@ -8,6 +8,7 @@ void airplane_report::PrintProgressStrip()
 	string Destination;
 	string Color;
 
+
 	For i in 1 to Number of Airplanes
 	{
 

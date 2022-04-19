@@ -6,7 +6,7 @@ airspace::airspace(vector<aircraft*> apVector, airport* aPort){
         Aircraft = apVector;
         Airport_Object = aPort;
         ReturnMessage = "";
-        NavAids = GENERATE ALL NAVAIDS STRUCTURES AND PUSH INTO THIS VARIABLE;
+        NavAids = /*GENERATE ALL NAVAIDS STRUCTURES AND PUSH INTO THIS VARIABLE*/;
     }
 
 void airspace::generate_airplane(){
@@ -14,8 +14,8 @@ void airspace::generate_airplane(){
     string randID;
     string FID = "";
     while FID in FlightIDs{ // generate aircraft ID and make sure its not in the vector already
-        airlineID = random chosen airline id;
-        randID = randomly generated 3 digit number;
+        airlineID = /*random chosen airline id*/;
+        randID = /*randomly generated 3 digit number*/;
         FID = airlineID + randID;
     }
 
@@ -37,7 +37,7 @@ string airspace::clear_aircraft(string FlightID, string NavPoint, char Directrio
         }
     }
     if idx1 == -1{
-        return invalid flight id
+        return /*invalid flight id*/
     }
 
     for x in NavAids.size{
@@ -46,7 +46,7 @@ string airspace::clear_aircraft(string FlightID, string NavPoint, char Directrio
         }
     }
     if idx2 == -1{
-        return invalid navaid
+        return /*invalid navaid*/;
     }
 
     coords[1] = NavAids[idx2].Coordinates[1];
@@ -71,7 +71,7 @@ string airspace::clear_aircraft(string FlightID, int heading, char Directrion){/
         }
     }
     if idx == -1{
-        return invalid flight id
+        return /*invalid flight id*/;
     }
 
     if heading >= 0 <= 360{
@@ -86,10 +86,10 @@ string airspace::clear_aircraft(string FlightID, int heading, char Directrion){/
         return invalid heading value
     }
     if(!ret){
-        return setting heading error message
+        return /*setting heading error message*/;
     }
     Aircraft[idx].Set_Cleared(true);
-    return success message
+    return /*success message*/;
 }
 
 string airspace::clear_aircraft(string FlightID, int altitude){
@@ -102,21 +102,21 @@ string airspace::clear_aircraft(string FlightID, int altitude){
         }
     }
     if idx == -1{
-        return invalid flight id
+        return /*invalid flight id*/;
     }
     altitude = altitude * 1000;
     if 0 < altitude <= 40,000{
         ret = Aircraft[idx]->Set_Altitude(altitude);
     }
     else{
-        return invalid altitude message
+        return /*invalid altitude message*/;
     }
 
-    if !ret {
-        return invalid set altitude message
+    if !ret{
+        return /*invalid set altitude message*/;
     }
     Aircraft[idx].Set_Cleared(true);
-    return success message
+    return /*success message*/;
 
 }
 
@@ -132,29 +132,29 @@ string airspace::land_aircraft(string FlightID, string runway){
         }
     }
     if idx == -1{
-        return invalid flight id
+        return /*invalid flight id*/;
     }
 
     coords = Aircraft[idx]->Get_Coordinates(); // get current aircraft coordinates to send to the 
 
     if Aircraft[idx]->Get_Intention() == true{ // true means departing
-        return departing aircraft cannot land error message;
+        return /*departing aircraft cannot land error message*/;
     }
     runwayInfo = Airport_Object->Get_Runway(runway); // get the runway information
     Aircraft[idx]->Set_Runway(runwayInfo.ID);
     // check and make sure that the parameters are met for an aircraft to land
     if Aircraft[idx]->Get_Altitude() > 3,000 and !Airport_Object->Degree_Clearance(coords,runwayInfo.ID){
-        return plane does not meet landing criteria error
+        return /*plane does not meet landing criteria error*/;
     }
     else{
         ret = Aircraft[idx]->Land();
     }
 
     if !ret{
-        retrun error landing message
+        retrun /*error landing message*/;
     }
 
-    return success message
+    return /*success message*/;
 
 }
 
@@ -170,12 +170,12 @@ string airspace::takeoff_aircraft(string FlightID){
         }
     }
     if idx == -1{
-        return invalid flight id
+        return /*invalid flight id*/;
     }
 
     // aircraft needs to be cleared before it can takeoff
     if !Aircraft[idx]->Get_Clearance(){ // if it isnt cleared
-        return not cleared error message
+        return /*not cleared error message*/;
     } 
         
     // if it is cleared then tell it to takeoff
@@ -184,14 +184,14 @@ string airspace::takeoff_aircraft(string FlightID){
         ret = Aircraft[idx]->Takeoff();
     }
     else{
-        return runway not available for Takeoff
+        return /*runway not available for Takeoff*/;
     }
 
     if ret == false{
-        return error taking off message
+        return /*error taking off message*/;
     }  
         
-    return success takeoff message
+    return /*success takeoff message*/;
 }
 
 string airspace::hold_aircraft(string FlightID, string NavPoint)
@@ -206,7 +206,7 @@ string airspace::hold_aircraft(string FlightID, string NavPoint)
         }
     }
     if idx1 == -1{
-        return invalid flight id
+        return /*invalid flight id*/;
     }
     for x in NavAids.size{
         if NavPoint == NavAids[x].ID{
@@ -214,7 +214,7 @@ string airspace::hold_aircraft(string FlightID, string NavPoint)
         }
     }
     if idx2 == -1{
-        return invalid navaid
+        return /*invalid navaid*/;
     }
 
     coords[1] = NavAids[idx2].Coordinates[1];
@@ -223,10 +223,10 @@ string airspace::hold_aircraft(string FlightID, string NavPoint)
     ret = Aircraft[idx1]->Set_Course(coords);
 
     if ret == false{
-        return error message
+        return /*error message*/;
     }    
 
-    return success message
+    return /*success message*/;
 }
 
     
@@ -243,22 +243,16 @@ bool airspace::set_aircraft_speed(string FlightID, int Speed){
         if FlightID == Aircraft[x]->Get_FlightID(){
             idx = x;
         }
-
     }
         
-    If(Speed >= 150 && Speed <= 400)
+    if(Speed >= 150 && Speed <= 400)
     {
-
         FlightIDSpeed = Speed;
-
-        Return Success Message
-
+        return /*Success Message*/;
     }
-    Else
+    else
     {
-
-        Return error message
-
+        return /*error message*/;
     }
 
 
@@ -267,29 +261,24 @@ bool airspace::set_aircraft_speed(string FlightID, int Speed){
 bool airspace::wait_aircraft(string FlightID) // takes the aircraft object which corresponds to the ID and just tells it to wait on the runway
 {
 
-//Take the FlightID and give it the command to wait on the runway given that it is on a runway
+    //Take the FlightID and give it the command to wait on the runway given that it is on a runway
 
-for x in Aircraft.size{ // this should iterate through the list of aircrafts we have and get the right one
-            if FlightID == Aircraft[x]->Get_FlightID(){
-                idx = x;
-            }
-
-
-if(FlightID is on a runway)
-{
-
-Give FlightID the wait command;
-Return success message;
-
-}
-Else
-{
-
-Return error message;// FlightID cannot wait, it's not on a runway
-}
-}
+    for x in Aircraft.size{ // this should iterate through the list of aircrafts we have and get the right one
+        if FlightID == Aircraft[x]->Get_FlightID(){
+            idx = x;
+        }
 
 
+        if(FlightID is on a runway)
+        {
+            /*Give FlightID the wait command*/;
+            return /*success message*/;
+        }
+        else
+        {
+            return /*error message*/;   // FlightID cannot wait, it's not on a runway
+        }
+    }
 }
 
 
@@ -298,33 +287,31 @@ bool airspace::abort_aircraft(string FlightID)
 
 //We are going to take the FlightID and give it the command to abort, either the FlightID will abort takeoff or abort landing
 
-for x in Aircraft.size{ // this should iterate through the list of aircrafts we have and get the right one
-            if FlightID == Aircraft[x]->Get_FlightID(){
-                idx = x;
-            }
+for x in Aircraft.size // this should iterate through the list of aircrafts we have and get the right one
+{ 
+    if FlightID == Aircraft[x]->Get_FlightID()
+    {
+        idx = x;
+    }
 
-if(FlightID is about to takeoff)
-{
+    if(FlightID is about to takeoff)
+    {
+        /*Tell FlightID to abort takeoff*/;
+        /*Set Speed to zero, move FlightID back to start of runway*/;
+        return /*success message*/;
 
-Tell FlightID to abort takeoff;
-Set Speed to zero, move FlightID back to start of runway;
-Return success message;
+    }
+
+    else if(/*FlightID is about to land*/)
+    {
+        /*Tell FlightID to abort landing*/;
+        /*Set altitude to default  altitude*/;
+        return /*success message*/;
+    }
+
+    else
+    {
+        return /*error message*/; //There is nothing to abort
+    }
 
 }
-elseif(FlightID is about to land)
-{
-
-Tell FlightID to abort landing;
-Set altitude to default  altitude;
-Return success message;
-
-}
-Else
-{
-
-Return error message; //There is nothing to abort
-}
-
-}
-
-};

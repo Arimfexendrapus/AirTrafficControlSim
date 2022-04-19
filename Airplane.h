@@ -14,7 +14,7 @@ class airplane
 {
 private:
 	string flightID;
-	aircraft aircraft;
+	aircraft Aircraft;
 	int speed;
 	int altitude;
 	int heading;
