@@ -1,11 +1,10 @@
-#include Airplane.h
-#include Airplane_Report.cpp
-#include string
-#include vector
+#include "airplane.h"
+#include <string>
+#include <vector>
 
 using namespace std;
 
-public class Airplane_Report{
+class airplane_report{
 	Private: 
 		Airplane array[] Airplane;
 

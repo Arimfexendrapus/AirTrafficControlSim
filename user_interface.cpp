@@ -1,12 +1,6 @@
-#include <string>
+#include "user_interface.h"
 
-class user_interface{
-
-private:
-        Airspace* Airspace_Object;
-        Airplane_Report* Report_Object;
-public:
-        user_interface(Airspace* as, Airplane_Report* apr){
+user_interface::user_interface(airspace* as, airplane_report* apr){
             Airspace_Oject = as; // store pointer to the airspace object
             Report_Object = apr; // point to the airplane report object 
             string input; // to hold the user input
@@ -22,93 +16,92 @@ public:
             }
         }
         
-        string Parse_Input(string input){
-            string planeID;
-            string message = '';
-            char command;
-            char turning = 'n'; // N specifies there is no real turning direction
-            int index;
-            string navpoint = '';
-            int headDir;
-            string parameter;
-            int len;
+string user_interface::Parse_Input(string input){
+    string planeID;
+    string message = '';
+    char command;
+    char turning = 'n'; // N specifies there is no real turning direction
+    int index;
+    string navpoint = '';
+    int headDir;
+    string parameter;
+    int len;
             
-            get planeID;
-            increment index to the next space past id;
+    get planeID;
+    increment index to the next space past id;
             
-            while input has characters{ // loop because the user can string multiple commands
-                get command character;
-                increment index;
+    while input has characters{ // loop because the user can string multiple commands
+        get command character;
+        increment index;
 
-                if command == clear{
-                    if no parameters supplied{
-                        return error string;
+        if command == clear{
+            if no parameters supplied{
+                return error string;
+            }
+            else{
+                get parameter from input;
+                increment index;
+                if parameter == navpoint{
+                    navpoint = parameter;
+                    if valid turning direction supplied{
+                        get turning from input;
+                        increment index;
+                    }
+                    message = Airspace_Object->Clear_Aircraft(planeID,navpoint,turning);
+                }
+                else{ // if the parameter is a heading or altitude
+                    make sure parameter is valid; // must be numbers between 1 and 3 length
+                    if parameter invalid{
+                        return error message;
                     }
                     else{
-                        get parameter from input;
-                        increment index;
-                        if parameter == navpoint{
-                            navpoint = parameter;
-                            if valid turning direction supplied{
-                                get turning from input;
-                                increment index;
+                        if parameter is heading{
+                            if turning direction supplied{
+                                get turning direction from input;
+                                increment index;                                        
                             }
-                            message = Airspace_Object->Clear_Aircraft(planeID,navpoint,turning);
+                            message = Airspace_Object->Clear_Aircraft(planeID, navpoint, turning);
                         }
-                        else{ // if the parameter is a heading or altitude
-                            make sure parameter is valid; // must be numbers between 1 and 3 length
-                            if parameter invalid{
-                                return error message;
-                            }
-                            else{
-                                if parameter is heading{
-                                    if turning direction supplied{
-                                        get turning direction from input;
-                                        increment index;                                        
-                                    }
-                                    message = Airspace_Object->Clear_Aircraft(planeID, navpoint, turning);
-                                }
-                                else if parameter is altitude{
-                                    message = Airspace_Object->Clear_Aircraft(planeID, navpoint);
-                                }
-                                else{
-                                    return error message;
-                                }
-                            }
+                        else if parameter is altitude{
+                            message = Airspace_Object->Clear_Aircraft(planeID, navpoint);
+                        }
+                        else{
+                            return error message;
                         }
                     }
                 }
-                else if command == hold{
-                    get parameter from input string;
-                    increment index;
-                    message = Airspace_Object->Hold_Aircraft(planeID,parameter); // pass the plane ID 
-                }
-                else if command == takeoff{
-                    message = Airspace_Object->Takeoff_Aircraft(planeID);
-                }         
-                else if command == land{
-                    get parameter from input string; 
-                    increment index;
-                    message = Airspace_Object->Land_Aircraft(planeID,parameter);
-                }
-                else if command == set speed{
-                    get parameter from input string;
-                    increment index;
-                    speed = (int)parameter;
-                    message = Airspace_Object->Set_Aircraft_Speed(planeID,speed);
-                }
-                else if command == wait{
-                    message = Airspace_Object->Wait_Aircraft(planeID);
-                }
-                else if command == abort{
-                    message = Airspace_Object->Abort_Aircraft(planeID);
-                }
-                else{
-                    message = invald command message;
-                }
-            
-            } // end of while loop
-
-            return message;
+            }
         }
-};
+        else if command == hold{
+            get parameter from input string;
+            increment index;
+            message = Airspace_Object->Hold_Aircraft(planeID,parameter); // pass the plane ID 
+        }
+        else if command == takeoff{
+            message = Airspace_Object->Takeoff_Aircraft(planeID);
+        }         
+        else if command == land{
+            get parameter from input string; 
+            increment index;
+            message = Airspace_Object->Land_Aircraft(planeID,parameter);
+        }
+        else if command == set speed{
+            get parameter from input string;
+            increment index;
+            speed = (int)parameter;
+            message = Airspace_Object->Set_Aircraft_Speed(planeID,speed);
+        }
+        else if command == wait{
+            message = Airspace_Object->Wait_Aircraft(planeID);
+        }
+        else if command == abort{
+            message = Airspace_Object->Abort_Aircraft(planeID);
+        }
+        else{
+            message = invald command message;
+        }
+            
+    } // end of while loop
+
+    return message;
+}

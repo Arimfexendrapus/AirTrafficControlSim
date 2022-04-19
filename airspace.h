@@ -11,23 +11,23 @@
 class airspace
 {
 private:
-    vector<string> flightids;
+    vector<string> FlightIDs;
     vector<aircraft*> Aircraft;
-    vector<nav_aid> navaids; // vector of navaid structs
-    airport* airport_object;
-    string returnmessage;
+    vector<nav_aid> NavAids; // vector of navaid structs
+    airport* Airport_Object;
+    string ReturnMessage;
 
 public:
-    Airspace(vector<aircraft*> apvector, airport* aport);
+    airspace(vector<aircraft*> apVector, airport* aPort);
     void generate_airplane();
-    string clear_aircraft(string flightID, string navpoint, char directrion);
-    string clear_aircraft(string flightID, int heading, char directrion);
-    string clear_aircraft(string flightID, int altitude);
-    string land_aircraft(string flightID, string runway);
-    string takeoff_aircraft(string flightid);
-    string hold_aircraft(string flightid, string navpoint);
-    set_aircraft_speed(string flightID, int speed);
-    wait_aircraft(string flightID);
-    abort_aircraft(string flightID);
+    string clear_aircraft(string FlightID, string NavPoint, char Directrion);
+    string clear_aircraft(string FlightID, int heading, char Directrion);
+    string clear_aircraft(string FlightID, int altitude);
+    string land_aircraft(string FlightID, string runway);
+    string takeoff_aircraft(string FlightID);
+    string hold_aircraft(string FlightID, string NavPoint);
+    bool set_aircraft_speed(string FlightID, int Speed);
+    bool wait_aircraft(string FlightID);
+    bool abort_aircraft(string FlightID);
 }
 
