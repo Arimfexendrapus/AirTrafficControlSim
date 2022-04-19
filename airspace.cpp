@@ -9,20 +9,20 @@ class Airspace
 {
 private:
     vector<string> FlightIDs;
-    vector<airplane *> Aircraft;
+    vector<aircraft*> Aircraft;
     vector<nav_aid> NavAids; // vector of NavAid Structs
     Airport* Airport_Object;
     string ReturnMessage;
 
 public:
-    Airspace(vector<Airplane*> apVector, Airport* aPort){
+    Airspace(vector<aircraft*> apVector, Airport* aPort){
         Aircraft = apVector;
         Airport_Object = aPort;
         ReturnMessage = "";
         NavAids = GENERATE ALL NAVAIDS STRUCTURES AND PUSH INTO THIS VARIABLE;
     }
 
-    void Generate_Airplane(){
+    void generate_airplane(){
         string airlineID;
         string randID;
         string FID = "";
@@ -33,13 +33,13 @@ public:
         }
 
         FlightIDs.push_back(FID); // add the id to the vector
-        Airplane* NewAirplane = new Airplane(FID); // generate a new airplane pointer
+        aircraft* NewAirplane = new Airplane(FID); // generate a new airplane pointer
         Aircraft->push_back(NewAirplane); // push that aircraft into vector
 
 
     }
 
-    string Clear_Aircraft(string FlightID, string NavPoint, char Directrion){ // clearing to a navpoint
+    string clear_aircraft(string FlightID, string NavPoint, char Directrion){ // clearing to a navpoint
         int idx1 = -1;
         int idx2 = -1;
         int coords[2];
@@ -74,7 +74,7 @@ public:
         Aircraft[idx].Set_Cleared(true);
         return ReturnMessage;
     }
-    string Clear_Aircraft(string FlightID, int heading, char Directrion){// clearing to a heading
+    string clear_aircraft(string FlightID, int heading, char Directrion){// clearing to a heading
         int idx = -1;
         bool ret;
 
@@ -105,7 +105,7 @@ public:
         return success message
     }
 
-    string Clear_Aircraft(string FlightID, int altitude){
+    string clear_aircraft(string FlightID, int altitude){
         int idx = -1;
         bool ret; 
 
@@ -133,7 +133,7 @@ public:
 
     }
 
-    string Land_Aircraft(string FlightID, string runway){
+    string land_aircraft(string FlightID, string runway){
         nav_aid runwayInfo;
         int idx = -1;
         bool ret;
@@ -171,7 +171,7 @@ public:
 
     }
 
-    string Takeoff_Aircraft(string FlightID){
+    string takeoff_aircraft(string FlightID){
         int idx = -1;
         bool ret;
         int coords[2];
@@ -207,7 +207,8 @@ public:
         return success takeoff message
     }
 
-    string Hold_Aircraft(string FlightID, string NavPoint){
+    string hold_aircraft(string FlightID, string NavPoint)
+    {
         int idx1 = -1;
         int idx2 = -1;
         bool ret;
@@ -245,7 +246,7 @@ public:
     
 
 
-    Set_Aircraft_Speed(FlightID : string, Speed : int){
+    set_aircraft_speed(string FlightID, int Speed){
         //Take the flightID and have the user enter the speed they want assigned to the aircraft. Once we have the speed then we can assign that speed to the flightID (General Idea will flesh out shortly)
         //not less than 150 and not more than 400
 
@@ -276,7 +277,7 @@ public:
 
     }
 
-    Wait_Aircraft(FlightID : string) // takes the aircraft object which corresponds to the ID and just tells it to wait on the runway
+    wait_aircraft(string FlightID) // takes the aircraft object which corresponds to the ID and just tells it to wait on the runway
     {
 
     //Take the FlightID and give it the command to wait on the runway given that it is on a runway
@@ -305,7 +306,7 @@ public:
     }
 
 
-    Abort_Aircraft(FlightID : string)
+    abort_aircraft(string FlightID)
     {
 
     //We are going to take the FlightID and give it the command to abort, either the FlightID will abort takeoff or abort landing
