@@ -1,9 +1,5 @@
 // Airspace Class Pseudo Code
-#include <vector>
-#include <string>
-#include "airport.h"
-#include "aircraft.h"
-#include "nav_aid.h"
+
 #include "airspace.h"
 
 airspace::airspace(vector<aircraft*> apVector, airport* aPort){

@@ -1,7 +1,6 @@
-#include "nav_aid.h"
+
 #include "airport.h"
-#include <string>
-#include <vector>
+
 
 using namespace std;
 
