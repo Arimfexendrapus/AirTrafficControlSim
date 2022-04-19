@@ -1,12 +1,10 @@
-#pragma once
-
 #include "airspace.h"
 #include <string>
 #include <vector>
 
 using namespace std;
 
-class Airplane
+class airplane
 {
 private:
 	string flightID;
@@ -24,29 +22,29 @@ public:
 	bool land(string Runway);
 	bool takeOff(vector<int> Coordinates);
 
-	bool Set_Speed(int Speed);
-	int Get_Speed();
+	bool set_speed(int Speed);
+	int get_speed();
 
-	bool Set_Altitude(int Altitutde);
-	int Get_Altitude();
+	bool set_altitude(int Altitutde);
+	int get_altitude();
 
-	bool Set_Heading(int Heading);
-	int Get_Heading();
+	bool set_heading(int Heading);
+	int get_heading();
 
-	bool Set_Course(vector<int> Coordinates);
-	vector<int> Get_Course();
+	bool set_course(vector<int> Coordinates);
+	vector<int> get_course();
 
-	bool Set_Intention(bool boolean);
-	bool Get_Intention();
+	bool set_intention(bool boolean);
+	bool get_intention();
 
-	bool Set_Coordinates(vector<int> Coordinates);
-	vector<int> Get_Coordinates();
+	bool set_coordinates(vector<int> Coordinates);
+	vector<int> get_coordinates();
 
-	bool Set_Runway(string Runway);
-	string Get_Runway();
+	bool set_runway(string Runway);
+	string get_runway();
 
-	bool Set_FlightID(string FlightID);
-	string Get_FlightID();
+	bool set_flightID(string FlightID);
+	string get_flightID();
 
 
 };
