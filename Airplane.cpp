@@ -6,7 +6,7 @@
 #include <unistd.h>
 #endif
 
-bool Airplane::land(string Runway)
+bool airplane::land(string Runway)
 {
 	if (altitude <= 3000 && Degree_Clearance(heading, Runway)==1)
 	{
@@ -15,27 +15,27 @@ bool Airplane::land(string Runway)
 		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
 		if (howLong < toDecel)
 		{
-			Set_Speed(0);
+			set_speed(0);
 		}
-		Set_Course(Runway.coordinates);
+		set_course(Runway.coordinates);
 
 	}
 
 }
 
-bool Airplane::takeOff(vector<int> Coordinates)
+bool airplane::takeOff(vector<int> Coordinates)
 {
 	if (/*requirements for takeoff are met*/)
 	{
-		Set_Course(Coordinates);
-		Set_Speed(takeoffSpeed);
-		Set_Altitude(takeoffAltitude);
+		set_course(Coordinates);
+		set_speed(takeoffSpeed);
+		set_altitude(takeoffAltitude);
 	}
 	if (boundForCoordinates == Coordinates) return true;
 	else return false;
 }
 
-bool Airplane::Set_Speed(int givenSpeed)
+bool airplane::set_speed(int givenSpeed)
 {
 	while(speed != givenSpeed)
 	{
@@ -67,12 +67,12 @@ bool Airplane::Set_Speed(int givenSpeed)
 	return true;
 }
 
-int Airplane::Get_Speed()
+int airplane::get_speed()
 {
 	return speed;
 }
 
-bool Airplane::Set_Altitude(int givenAltitude)
+bool airplane::set_altitude(int givenAltitude)
 {
 	while (altitude != givenAltitude)
 	{
@@ -104,24 +104,24 @@ bool Airplane::Set_Altitude(int givenAltitude)
 	return true;
 }
 
-int Airplane::Get_Altitude()
+int airplane::get_altitude()
 {
 	return altitude;
 }
 
-bool Airplane::Set_Heading(int Heading)
+bool airplane::set_heading(int Heading)
 {
 	heading = Heading;
 	if (heading == Heading) return true;
 	else return false;
 }
 
-int Airplane::Get_Heading()
+int airplane::get_heading()
 {
 	return heading;
 }
 
-bool Airplane::Set_Course(vector<int> Coordinates)
+bool airplane::set_course(vector<int> Coordinates)
 {
 	boundForCoordinates[0] = Coordinates[0];
 	boundForCoordinates[1] = Coordinates[1];
@@ -131,7 +131,7 @@ bool Airplane::Set_Course(vector<int> Coordinates)
 	else return false;
 }
 
-vector<int> Airplane::Get_Course()
+vector<int> airplane::get_course()
 {
 	vector<int> Course;
 	Course.push_back(boundForCoordinates[0]);
@@ -141,19 +141,19 @@ vector<int> Airplane::Get_Course()
 	return Course;
 }
 
-bool Airplane::Set_Intention(bool boolean)
+bool airplane::set_intention(bool boolean)
 {
 	departing = boolean;
 	if (departing == boolean) return true;
 	else return false;
 }
 
-bool Airplane::Get_Intention()
+bool airplane::get_intention()
 {
 	return departing;
 }
 
-bool Airplane::Set_Coordinates(vector<int> Coordinates)
+bool airplane::set_coordinates(vector<int> Coordinates)
 {
 	flightCoordinates[0] = Coordinates[0];
 	flightCoordinates[1] = Coordinates[1];
@@ -163,7 +163,7 @@ bool Airplane::Set_Coordinates(vector<int> Coordinates)
 	else return false;
 }
 
-vector<int> Airplane::Get_Coordinates()
+vector<int> airplane::get_coordinates()
 {
 	vector<int> Coordinates;
 	Coordinates.push_back(flightCoordinates[0]);
@@ -173,26 +173,26 @@ vector<int> Airplane::Get_Coordinates()
 	return Coordinates;
 }
 
-bool Airplane::Set_Runway(string Runway)
+bool airplane::set_runway(string Runway)
 {
 	runway = Runway;
 	if (Runway == runway) return true;
 	else return false;
 }
 
-string Airplane::Get_Runway()
+string airplane::get_runway()
 {
 	return runway;
 }
 
-bool Airplane::Set_FlightID(string FlightID)
+bool airplane::set_flightID(string FlightID)
 {
 	flightID = FlightID;
 	if (flightID == FlightID) return true;
 	else return false;
 }
 
-string Airplane::Get_FlightID()
+string airplane::get_flightID()
 {
 	return flightID;
 }

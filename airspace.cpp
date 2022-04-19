@@ -4,6 +4,7 @@
 #include "airport.h"
 #include "aircraft.h"
 #include "nav_aid.h"
+#include "airspace.h"
 
 class Airspace
 {
@@ -11,11 +12,11 @@ private:
     vector<string> FlightIDs;
     vector<aircraft*> Aircraft;
     vector<nav_aid> NavAids; // vector of NavAid Structs
-    Airport* Airport_Object;
+    airport* Airport_Object;
     string ReturnMessage;
 
 public:
-    Airspace(vector<aircraft*> apVector, Airport* aPort){
+    Airspace(vector<aircraft*> apVector, airport* aPort){
         Aircraft = apVector;
         Airport_Object = aPort;
         ReturnMessage = "";
