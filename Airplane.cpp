@@ -6,21 +6,19 @@
 #include <unistd.h>
 #endif
 
+#define takeoffSpeed 160
+#define takeoffAltitude 5000
+
 bool airplane::land(string Runway)
 {
-	if (altitude <= 3000 && Degree_Clearance(heading, Runway)==1)
+	if (altitude <= 3000 && degree_clearance(heading, Runway)==1)
 	{
 		int distance = 0;/*(distance between aircraft and runway)*/
 		int howLong = 0; /*distance / speed */
 		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
-		if (howLong < toDecel)
-		{
-			set_speed(0);
-		}
+		if (howLong < toDecel) set_speed(0);
 		set_course(Runway.coordinates);
-
 	}
-
 }
 
 bool airplane::takeOff(vector<int> Coordinates)
@@ -37,30 +35,20 @@ bool airplane::takeOff(vector<int> Coordinates)
 
 bool airplane::set_speed(int givenSpeed)
 {
+	if (givenSpeed > Aircraft.aircraft_max_speed) return false;
+
 	while(speed != givenSpeed)
 	{
 		if (speed > givenSpeed)
 		{
-			if (speed - aircraft.acceleration[1] < givenSpeed)
-			{
-				speed = givenSpeed;
-			}
-			else
-			{
-				speed -= aircraft.acceleration[1];
-			}	
+			if (speed - Aircraft.aircraft_acceleration[1] < givenSpeed) speed = givenSpeed;
+			else speed -= Aircraft.aircraft_acceleration[1];	
 		}
 
 		else if (speed < givenSpeed)
 		{
-			if (speed + aircraft.acceleration[0] > givenSpeed)
-			{
-				speed = givenSpeed;
-			}
-			else
-			{
-				speed += aircraft.acceleration[0];
-			}
+			if (speed + Aircraft.aircraft_acceleration[0] > givenSpeed) speed = givenSpeed;
+			else speed += Aircraft.aircraft_acceleration[0];
 		}
 		sleep(1);
 	}
@@ -78,26 +66,14 @@ bool airplane::set_altitude(int givenAltitude)
 	{
 		if (altitude > givenAltitude)
 		{
-			if (altitude - aircraft.climb < givenAltitude)
-			{
-				altitude = givenAltitude;
-			}
-			else
-			{
-				altitude -= aircraft.climb;
-			}
+			if (altitude - Aircraft.aircraft_elevation_rate < givenAltitude) altitude = givenAltitude;
+			else altitude -= Aircraft.aircraft_elevation_rate;
 		}
 
 		else if (altitude < givenAltitude)
 		{
-			if (altitude + aircraft.climb > givenAltitude)
-			{
-				altitude = givenAltitude;
-			}
-			else
-			{
-				altitude += aircraft.climb;
-			}
+			if (altitude + Aircraft.aircraft_elevation_rate > givenAltitude) altitude = givenAltitude;
+			else altitude += Aircraft.aircraft_elevation_rate;
 		}
 		sleep(1);
 	}
