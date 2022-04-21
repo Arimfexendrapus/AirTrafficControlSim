@@ -274,5 +274,5 @@ airplane::airplane()
 	finalDestination = { 0,0,0 };
 	isCleared = false;
 	departing = false;
-	runway = b;
+	Runway = b;
 }

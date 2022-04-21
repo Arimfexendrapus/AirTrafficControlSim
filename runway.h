@@ -11,6 +11,7 @@ struct runway {
 	vector<int> location = { 0,0,0 };
 	int outHeading = 0;
 	int inHeading = outHeading + 180;
+	string test = "test";
 };
 
 #endif
