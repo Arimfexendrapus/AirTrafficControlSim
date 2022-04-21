@@ -31,8 +31,8 @@ private:
 	bool departing;
 	runway Runway;
 public:
-	bool land(int RunwayID, airport Airport);
-	//bool takeOff(vector<int> Coordinates);
+	bool land(airport Airport);
+	bool takeOff(vector<int> Coordinates);
 
 	bool set_speed(int Speed);
 	int get_speed();
@@ -74,33 +74,33 @@ public:
 #define takeoffSpeed 160
 #define takeoffAltitude 5000
 
-bool airplane::land(int RunwayID, airport Airport)
+bool airplane::land(airport Airport)
 {
-	if (altitude <= 3000 && Airport.degree_clearance(heading, RunwayID)==1)
+	if (altitude <= 3000 && Airport.degree_clearance(heading, Runway.runwayID)==1)
 	{
 		int distance = 0;/*(distance between aircraft and runway)*/
 		int howLong = 0; /*distance / speed */
 		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
 		if (howLong < toDecel) set_speed(0);
 		
-		runway a = Airport.get_runway(RunwayID);
+		runway a = Airport.get_runway(Runway.runwayID);
 		vector<int> coords = a.endlocation;
 
 		set_course(coords);
 	}
 }
 
-//bool airplane::takeOff(vector<int> Coordinates)
-//{
-//	if (/*requirements for takeoff are met*/)
-//	{
-//		set_course(Coordinates);
-//		set_speed(takeoffSpeed);
-//		set_altitude(takeoffAltitude);
-//	}
-//	if (boundForCoordinates == Coordinates) return true;
-//	else return false;
-//}
+bool airplane::takeOff(vector<int> Coordinates)
+{
+	if (/*requirements for takeoff are met*/)
+	{
+		set_course(Coordinates);
+		set_speed(takeoffSpeed);
+		set_altitude(takeoffAltitude);
+	}
+	if (boundForCoordinates == Coordinates) return true;
+	else return false;
+}
 
 bool airplane::set_speed(int givenSpeed)
 {
