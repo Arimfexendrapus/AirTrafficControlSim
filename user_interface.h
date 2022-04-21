@@ -10,7 +10,7 @@ class user_interface {
 
 private:
     airspace* Airspace_Object;
-    airplane_report* Report_Object;
+    airplane_report* Report_Object;//
 public:
     user_interface(airspace* as, airplane_report* apr);
 
