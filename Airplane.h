@@ -156,7 +156,7 @@ bool airplane::set_heading(int Heading)
 	else return false;
 }
 
-bool set_heading(int Heading, char direction)
+bool airplane::set_heading(int Heading, char direction)
 {
 	//Need to ask for clarification
 
