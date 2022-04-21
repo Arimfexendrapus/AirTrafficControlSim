@@ -2,11 +2,9 @@
 #define NAV_AID
 
 #include <string>
-struct nav_aid{
 
+struct nav_aid{
 	string ID;
 	int coordinates[2];
-
 };
-
 #endif

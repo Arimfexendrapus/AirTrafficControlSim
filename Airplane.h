@@ -1,6 +1,9 @@
 #ifndef AIRPLANE
 #define AIRPLANE
 
+#define takeoffSpeed 160
+#define takeoffAltitude 5000
+
 //#include "airspace.h"
 #include "aircraft.h"
 #include "runway.h"
@@ -62,17 +65,10 @@ public:
 	bool set_clearance(bool clear);
 	bool get_clearance();
 
-
 	//contructor
 	airplane();
-
 };
-
 #endif
-
-
-#define takeoffSpeed 160
-#define takeoffAltitude 5000
 
 bool airplane::land(airport Airport)
 {
@@ -102,7 +98,6 @@ bool airplane::takeOff(vector<int> Coordinates)
 bool airplane::set_speed(int givenSpeed)
 {
 	if (givenSpeed > Aircraft.aircraft_max_speed) return false;
-
 	while (speed != givenSpeed)
 	{
 		if (speed > givenSpeed)
@@ -110,7 +105,6 @@ bool airplane::set_speed(int givenSpeed)
 			if (speed - Aircraft.aircraft_acceleration[1] < givenSpeed) speed = givenSpeed;
 			else speed -= Aircraft.aircraft_acceleration[1];
 		}
-
 		else if (speed < givenSpeed)
 		{
 			if (speed + Aircraft.aircraft_acceleration[0] > givenSpeed) speed = givenSpeed;
@@ -135,7 +129,6 @@ bool airplane::set_altitude(int givenAltitude)
 			if (altitude - Aircraft.aircraft_elevation_rate < givenAltitude) altitude = givenAltitude;
 			else altitude -= Aircraft.aircraft_elevation_rate;
 		}
-
 		else if (altitude < givenAltitude)
 		{
 			if (altitude + Aircraft.aircraft_elevation_rate > givenAltitude) altitude = givenAltitude;
@@ -161,8 +154,6 @@ bool airplane::set_heading(int Heading)
 bool airplane::set_heading(int Heading, char direction)
 {
 	//Need to ask for clarification
-
-
 	return true;
 }
 
@@ -176,7 +167,6 @@ bool airplane::set_course(vector<int> Coordinates)
 	boundForCoordinates[0] = Coordinates[0];
 	boundForCoordinates[1] = Coordinates[1];
 	boundForCoordinates[2] = Coordinates[2];
-
 	if (Coordinates == boundForCoordinates) return true;
 	else return false;
 }
@@ -187,14 +177,12 @@ vector<int> airplane::get_course()
 	Course.push_back(boundForCoordinates[0]);
 	Course.push_back(boundForCoordinates[1]);
 	Course.push_back(boundForCoordinates[2]);
-
 	return Course;
 }
 
 bool airplane::set_intention(bool boolean)
 {
 	//true is departing, false is arriving
-
 	departing = boolean;
 	if (departing == boolean) return true;
 	else return false;
@@ -210,7 +198,6 @@ bool airplane::set_coordinates(vector<int> Coordinates)
 	flightCoordinates[0] = Coordinates[0];
 	flightCoordinates[1] = Coordinates[1];
 	flightCoordinates[2] = Coordinates[2];
-
 	if (Coordinates == flightCoordinates) return true;
 	else return false;
 }
@@ -221,7 +208,6 @@ vector<int> airplane::get_coordinates()
 	Coordinates.push_back(flightCoordinates[0]);
 	Coordinates.push_back(flightCoordinates[1]);
 	Coordinates.push_back(flightCoordinates[2]);
-
 	return Coordinates;
 }
 

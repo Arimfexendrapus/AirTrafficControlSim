@@ -1,5 +1,6 @@
 #ifndef AIRCRAFT
 #define AIRCRAFT
+
 #include <string>
 
 struct aircraft {

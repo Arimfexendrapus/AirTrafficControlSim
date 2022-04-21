@@ -19,7 +19,6 @@ public:
 	void occupy_runway(int runwayID);
 	int identify_runway(int runwayID);
 };
-
 #endif
 
 int airport::identify_runway(int runwayID)
@@ -28,7 +27,6 @@ int airport::identify_runway(int runwayID)
 	{
 		if (runwayID == runways[i].runwayID) return i;
 	}
-
 	return -1;
 	//if invalid runway name what should we do in this case? or is it already checked
 }
@@ -36,20 +34,11 @@ int airport::identify_runway(int runwayID)
 bool airport::degree_clearance(int heading, int runwayID)
 {
 	int i = identify_runway(runwayID);
-
 	if (heading > runways[i].inHeading-30)
 	{
-		if (heading < runways[i].inHeading+30)
-		{
-			return true;
-		}
+		if (heading < runways[i].inHeading+30) return true;
 	}
 	return false;
-
-	//refAngle = calculated degrees between planeCoords and runwayEndPoints[i] // cos^-1(a/h) 
-
-	//	if (refAngle <= 30) return true;
-	//	else return false;
 }
 
 bool airport::runway_availability(int runwayID)

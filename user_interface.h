@@ -1,13 +1,11 @@
 #ifndef USER_INTERFACE
 #define USER_INTERFACE
 
-
 #include <string>
 #include "airspace.h"
 #include "Airplane_report.h"
 
 class user_interface {
-
 private:
     airspace* Airspace_Object;
     airplane_report* Report_Object;//
@@ -16,9 +14,7 @@ public:
 
     string Parse_Input(string input);
 };
-
 #endif
-
 
 user_interface::user_interface(airspace* as, airplane_report* apr) {
     Airspace_Oject = as; // store pointer to the airspace object
@@ -46,14 +42,11 @@ string user_interface::Parse_Input(string input) {
     int headDir;
     string parameter;
     int len;
-
     get planeID;
     increment index to the next space past id;
-
     while input has characters{ // loop because the user can string multiple commands
         get command character;
         increment index;
-
         if command == clear{
             if no parameters supplied{
                 return error string;
@@ -120,8 +113,6 @@ string user_interface::Parse_Input(string input) {
         else {
             message = invald command message;
         }
-
     } // end of while loop
-
     return message;
 }

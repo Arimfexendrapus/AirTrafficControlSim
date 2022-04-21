@@ -15,7 +15,6 @@ public:
 	void PrintProgressStrip();
 	void PrintDisplayStrip();
 };
-
 #endif
 
 void airplane_report::PrintProgressStrip()
@@ -23,11 +22,8 @@ void airplane_report::PrintProgressStrip()
 	string Travel;
 	string Destination;
 	string Color;
-
-
 	For i in 1 to Number of Airplanes
 	{
-
 		int Altitude = Airplane[i]->Get_Altitude();
 		if (Airplane[i]->Get_Intention() == Departing) {
 			Color = light blue;
@@ -44,7 +40,6 @@ else {
 	Color = "pale yellow";
 	Travel = Airplane[i]->Get_Heading();
 	Destination = "Arrival";
-
 print(Airplane[i]->Get_FlightID());
 print(Travel);
 print(Altitude);
@@ -52,7 +47,6 @@ print(Airplane[i]->Get_Airplane_Type());
 print(Destination);
 }
 	}
-
 }
 
 void airplane_report::PrintDisplayStrip()
@@ -64,5 +58,4 @@ void airplane_report::PrintDisplayStrip()
 		Print(Airplane[i]->Get_Speed());
 
 	}
-
 }

@@ -15,5 +15,4 @@ struct runway {
 	string test = "test";
 	bool available = false;
 };
-
 #endif
