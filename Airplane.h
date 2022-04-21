@@ -89,7 +89,7 @@ bool airplane::land(airport Airport)
 
 bool airplane::takeOff(vector<int> Coordinates)
 {
-	if (/*requirements for takeoff are met*/)
+	if (/*requirements for takeoff are met */)
 	{
 		set_course(Coordinates);
 		set_speed(takeoffSpeed);
