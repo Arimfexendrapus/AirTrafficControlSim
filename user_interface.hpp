@@ -1,8 +1,50 @@
+/*
+    Last Editor: Conor Rybacki
+    Last Edit Date: 04.19.2022
+    File Name: User_Interface.h
+
+    Details:
+    User interface class is meant to handel all of the input and output
+    to and from the user. It will take input, parse it, then pass the
+    necessary information to the necessary place. It handels all of the
+    aircraft and simulation information output to the user.
+*/
+#ifndef USER_INTERFACE_H
+#define USER_INTERFACE_H
 #include <iostream>
-#include <string>
 #include "user_interface.hpp"
 
+#include "Airplane_Report.h"
+#include "Airspace.h"
+#include <string>
 using namespace std;
+
+class User_Interface
+{
+private:
+    Airspace *Airspace_Object;      // hold the pointer to the airspace object passed in the constructor
+    Airplane_Report *Report_Object; // hold the pointer to the airplane report object
+    bool run;                       // flag that tells the main control loop to keep running
+    bool debugging;                 // debugging flag
+    string returnMessage;           // variable that holds the message to be returned to the user
+public:
+    User_Interface(Airspace *as, Airplane_Report *apr);
+    // Constructor to handle the assignment of the airspace and airplane report
+    // pointers to local instances to be utilized by the programming. Also manages
+    // loop that will run while the program is running to continue accepting input from the user.
+    // Preconditions: pass in 2 pointers; one to an Airspace object
+    // and another on to an Airplane_Report object
+    // Postconditions: Airspace_Object and Report_Object now point
+    // to their corresponding instance in main
+    void Parse_Input(string input);
+    // This methods main purpose is to take the users input and break it up
+    // into the necessary information needed by the simulation to alter the
+    // state of the various entities
+    // Precondition: user input must be passed into the function
+    // Postcondition: any message returned from called methods or any message
+    // specifically generate by this method itself
+};
+#endif
 
 User_Interface::User_Interface(Airspace *as, Airplane_Report *apr)
 {
