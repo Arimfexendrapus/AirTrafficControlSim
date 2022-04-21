@@ -29,7 +29,7 @@ private:
 	vector<int> finalDestination;
 	bool isCleared;
 	bool departing;
-	runway Runway;
+	runway *Runway;
 public:
 	bool land(airport Airport);
 	bool takeOff(vector<int> Coordinates);
@@ -53,7 +53,7 @@ public:
 	bool set_coordinates(vector<int> Coordinates);
 	vector<int> get_coordinates();
 
-	bool set_runway(int RunwayID);
+	bool set_runway(int runwayID, airport Airport);
 	int get_runway();
 
 	bool set_flightID(string FlightID);
@@ -76,17 +76,14 @@ public:
 
 bool airplane::land(airport Airport)
 {
-	if (altitude <= 3000 && Airport.degree_clearance(heading, Runway.runwayID)==1)
+	if (altitude <= 3000 && Airport.degree_clearance(heading, Runway->runwayID)==1)
 	{
 		int distance = 0;/*(distance between aircraft and runway)*/
 		int howLong = 0; /*distance / speed */
 		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
 		if (howLong < toDecel) set_speed(0);
 		
-		runway a = Airport.get_runway(Runway.runwayID);
-		vector<int> coords = a.endlocation;
-
-		set_course(coords);
+		set_course(Runway->endlocation);
 	}
 }
 
@@ -228,16 +225,16 @@ vector<int> airplane::get_coordinates()
 	return Coordinates;
 }
 
-bool airplane::set_runway(int RunwayID)
+bool airplane::set_runway(int runwayID, airport Airport)
 {
-	Runway.runwayID = RunwayID;
-	if (Runway.runwayID == RunwayID) return true;
+	Runway = &Airport.get_runway(runwayID);
+	if (Runway->runwayID == runwayID) return true;
 	else return false;
 }
 
 int airplane::get_runway()
 {
-	return Runway.runwayID;
+	return Runway->runwayID;
 }
 
 bool airplane::set_flightID(string FlightID)
