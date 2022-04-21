@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="User_Interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aircraft.hpp" />
