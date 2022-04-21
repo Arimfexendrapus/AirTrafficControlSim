@@ -32,4 +32,12 @@ using namespace std;
 int main()
 {
 	cout << "This is a start" << endl;
+
+    airspace AirspaceObject;
+    airplane_report ReportObject;
+
+    User_Interface InterfaceObject(AirspaceObject, ReportObject);
+
+    return 0;
+
 }
