@@ -12,23 +12,23 @@
 #ifndef USER_INTERFACE_H
 #define USER_INTERFACE_H
 #include <iostream>
-#include "user_interface.hpp"
 
-#include "Airplane_Report.h"
-#include "Airspace.h"
+
+#include "airplane_report.hpp"
+#include "airspace.hpp"
 #include <string>
 using namespace std;
 
 class User_Interface
 {
 private:
-    Airspace *Airspace_Object;      // hold the pointer to the airspace object passed in the constructor
-    Airplane_Report *Report_Object; // hold the pointer to the airplane report object
+    airspace *Airspace_Object;      // hold the pointer to the airspace object passed in the constructor
+    airplane_report *Report_Object; // hold the pointer to the airplane report object
     bool run;                       // flag that tells the main control loop to keep running
     bool debugging;                 // debugging flag
     string returnMessage;           // variable that holds the message to be returned to the user
 public:
-    User_Interface(Airspace *as, Airplane_Report *apr);
+    User_Interface(airspace *as, airplane_report *apr);
     // Constructor to handle the assignment of the airspace and airplane report
     // pointers to local instances to be utilized by the programming. Also manages
     // loop that will run while the program is running to continue accepting input from the user.
@@ -46,7 +46,7 @@ public:
 };
 #endif
 
-User_Interface::User_Interface(Airspace *as, Airplane_Report *apr)
+User_Interface::User_Interface(airspace *as, airplane_report *apr)
 {
     debugging = true;
     returnMessage = "";
