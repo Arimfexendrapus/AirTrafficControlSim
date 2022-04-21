@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <cmath>
 #include "nav_aid.hpp"
 #include "runway.hpp"
 
@@ -44,11 +45,18 @@ bool airport::degree_clearance(int heading, int runwayID)
 		}
 	}
 	return false;
-
-	//refAngle = calculated degrees between planeCoords and runwayEndPoints[i] // cos^-1(a/h) 
-
-	//	if (refAngle <= 30) return true;
-	//	else return false;
+/*------------------- To Be Combined ------------------------------------*/
+		int refAngle = abs((180/pi)*arccos(
+			(planeCoords[0] - runwayEndPoints[i].Coordinates[0])//divided by
+			/((planeCoords[0] - runwayEndPoints[i].Coordinates[0])^2 + (planeCoords[1] - runwayEndPoints[i].Coordinates[1])^2)^(1/2))); // cos^-1(a/h) 
+		if(refAngle <= 30)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 }
 
 bool airport::runway_availability(int runwayID)
