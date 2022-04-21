@@ -1,3 +1,6 @@
+#ifndef NAV_AID
+#define NAV_AID
+
 #include <string>
 struct nav_aid{
 
@@ -5,3 +8,5 @@ struct nav_aid{
 	int coordinates[2];
 
 };
+
+#endif

@@ -1,3 +1,5 @@
+#ifndef AIRCRAFT
+#define AIRCRAFT
 #include <string>
 
 struct aircraft {
@@ -7,3 +9,4 @@ struct aircraft {
 	int aircraft_max_speed;
 	int aircraft_max_altitude;
 };
+#endif

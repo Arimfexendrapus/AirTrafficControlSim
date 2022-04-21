@@ -139,10 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="airplane_report.cpp" />
-    <ClCompile Include="airport.cpp" />
-    <ClCompile Include="airspace.cpp" />
-    <ClCompile Include="user_interface.cpp" />
+    <ClCompile Include="Driver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aircraft.h" />
