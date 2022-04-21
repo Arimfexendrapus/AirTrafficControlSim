@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="airplane.cpp" />
     <ClCompile Include="airplane_report.cpp" />
     <ClCompile Include="airport.cpp" />
     <ClCompile Include="airspace.cpp" />
@@ -152,6 +151,7 @@
     <ClInclude Include="airport.h" />
     <ClInclude Include="airspace.h" />
     <ClInclude Include="nav_aid.h" />
+    <ClInclude Include="runway.h" />
     <ClInclude Include="user_interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

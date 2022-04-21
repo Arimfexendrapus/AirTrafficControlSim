@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="airplane.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="airport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -51,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="airplane_report.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="runway.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
