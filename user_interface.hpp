@@ -12,6 +12,7 @@
 #ifndef USER_INTERFACE_H
 #define USER_INTERFACE_H
 #include <iostream>
+#include <algorithm>
 
 
 #include "airplane_report.hpp"
@@ -69,8 +70,8 @@ User_Interface::User_Interface(airspace *as, airplane_report *apr)
         {
             this->Parse_Input(input);                            // send the command to be parsed
             cout << returnMessage << endl;                       // print the message to the user
-            cout << Report_Object->PrintProgressStrip() << endl; // print the progress and display strips
-            cout << Report_Object->PrintDisplayStrip() << endl;
+            Report_Object->PrintProgressStrip(); // print the progress and display strips
+            Report_Object->PrintDisplayStrip();
         }
         returnMessage = "";
     }
