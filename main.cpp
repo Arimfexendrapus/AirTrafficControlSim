@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include "Airspace.h"
-#include "Airplane_Report.h"
+#include "airspace.h"
+#include "airplane_Report.h"
 #include "User_Interface.h"
 
 using namespace std;
