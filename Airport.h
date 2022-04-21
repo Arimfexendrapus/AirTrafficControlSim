@@ -10,7 +10,7 @@ using namespace std;
 
 class airport {
 private:
-	vector<runway> runways; // contains name and coordinate locations of each runway
+	vector<runway> runways; // contains runways
 public:
 	bool degree_clearance(int heading, int runwayID);
 	bool runway_availability(int runwayID);

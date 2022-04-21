@@ -4,6 +4,7 @@
 //#include "airspace.h"
 #include "aircraft.h"
 #include "runway.h"
+#include "airport.h"
 #include <string>
 #include <vector>
 
@@ -30,8 +31,8 @@ private:
 	bool departing;
 	runway Runway;
 public:
-	/*bool land(string Runway);
-	bool takeOff(vector<int> Coordinates);*/
+	bool land(int RunwayID, airport Airport);
+	//bool takeOff(vector<int> Coordinates);
 
 	bool set_speed(int Speed);
 	int get_speed();
@@ -73,17 +74,21 @@ public:
 #define takeoffSpeed 160
 #define takeoffAltitude 5000
 
-//bool airplane::land(string Runway)
-//{
-//	//if (altitude <= 3000 && degree_clearance(heading, Runway)==1)
-//	//{
-//	//	int distance = 0;/*(distance between aircraft and runway)*/
-//	//	int howLong = 0; /*distance / speed */
-//	//	int toDecel = 0; /*distance / aircraft.acceleration[1]*/
-//	//	if (howLong < toDecel) set_speed(0);
-//	//	set_course(Runway.coordinates);
-//	//}
-//}
+bool airplane::land(int RunwayID, airport Airport)
+{
+	if (altitude <= 3000 && Airport.degree_clearance(heading, RunwayID)==1)
+	{
+		int distance = 0;/*(distance between aircraft and runway)*/
+		int howLong = 0; /*distance / speed */
+		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
+		if (howLong < toDecel) set_speed(0);
+		
+		runway a = Airport.get_runway(RunwayID);
+		vector<int> coords = a.endlocation;
+
+		set_course(coords);
+	}
+}
 
 //bool airplane::takeOff(vector<int> Coordinates)
 //{
