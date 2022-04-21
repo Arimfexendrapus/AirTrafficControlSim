@@ -1,5 +1,8 @@
 #include <string> 
 #include <vector>
+#include <iostream>
+
+#include "airplane.hpp"
 
 using namespace std;
 
@@ -19,7 +22,7 @@ public:
 void airplane_report::PrintProgressStrip()
 {
     string Travel;
-    string Destination;
+    vector<int> Destination;
     //string Color;
 
     for (int i = 0; i > Airplanes.size(); i++)
@@ -29,35 +32,35 @@ void airplane_report::PrintProgressStrip()
         if (Airplanes[i].get_intention() == true) {
             //Color = light blue;
             if (altitude == 0) { //0 in relation to airport 
-                Travel = Airplanes[i].Get_Runway();
+                Travel = Airplanes[i].get_runway();
             }
             else {
-                Travel = Airplanes[i].Get_Heading();
+                Travel = Airplanes[i].get_heading();
             }
-            Destination = Airplanes[i].Get_NavAid();
+            Destination = Airplanes[i].get_coordinates();
 
         }
         else {
             //Color = "pale yellow";
-            Travel = Airplanes[i].Get_Heading();
+            Travel = Airplanes[i].get_heading();
             Destination = "Arrival";
 
-            print(Airplanes[i].Get_FlightID());
-            print(Travel);
-            print(Altitude);
-            print(Airplanes[i].Get_Airplane_Type());
-            print(Destination);
+            cout << Airplanes[i].get_flightID() << endl;
+            cout << Travel << endl;
+            cout << Altitude << endl;
+            cout << Airplanes[i].Aircraft.aircraft_name << endl;
+            cout << Destination << endl;
         }
     }
 }
 
 void airplane_report::PrintDisplayStrip()
 {
-    for (int i = 0; i < sizeof(Airplanes); i++) {
-
-        Print(Airplanes[i].Get_FlightID());
-        Print(Airplanes[i].Get_Altitude());
-        Print(Airplanes[i].Get_Speed());
+    for (int i = 0; i < Airplanes.size(); i++) 
+    {
+        cout << Airplanes[i].Get_FlightID() << endl;
+        cout << Airplanes[i].Get_Altitude() << endl;
+        cout << Airplanes[i].Get_Speed() << endl;
     }
 }
 

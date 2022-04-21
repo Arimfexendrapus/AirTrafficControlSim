@@ -23,7 +23,7 @@ class airplane
 {
 private:
 	string flightID;
-	aircraft Aircraft;
+	
 	int speed;
 	int altitude;
 	int heading;
@@ -34,6 +34,9 @@ private:
 	bool departing;
 	runway *Runway;
 public:
+
+	aircraft Aircraft;
+
 	bool land(airport Airport);
 	bool takeOff(vector<int> Coordinates);
 

@@ -271,7 +271,7 @@ bool airspace::wait_aircraft(string FlightID) // takes the aircraft object which
     }
 }
 
-bool airspace::abort_aircraft(string FlightID);
+bool airspace::abort_aircraft(string FlightID)
 {
     //We are going to take the FlightID and give it the command to abort, either the FlightID will abort takeoff or abort landing
     for x in Aircraft.size // this should iterate through the list of aircrafts we have and get the right one
