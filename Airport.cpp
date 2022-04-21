@@ -2,16 +2,17 @@
 #include "airport.h"
 #include <string>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
 
-
-
-	bool airport::degree_clearance(int heading, string runway)
+	bool airport::degree_clearance(vector<int> planeCoords, string runway)
 	{
 		int i = identify_runway(runway);
-		refAngle = calculated degrees between planeCoords and runwayEndPoints[i] // cos^-1(a/h) 
+		int refAngle = abs((180/pi)*arccos(
+			(planeCoords[0] - runwayEndPoints[i].Coordinates[0])//divided by
+			/((planeCoords[0] - runwayEndPoints[i].Coordinates[0])^2 + (planeCoords[1] - runwayEndPoints[i].Coordinates[1])^2)^(1/2))); // cos^-1(a/h) 
 		if(refAngle <= 30)
 		{
 			return true;
