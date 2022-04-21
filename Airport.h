@@ -19,7 +19,6 @@ public:
 	void occupy_runway(int runwayID);
 	int identify_runway(int runwayID);
 };
-
 #endif
 
 int airport::identify_runway(int runwayID)
