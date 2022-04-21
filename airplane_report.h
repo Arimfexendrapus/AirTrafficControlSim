@@ -1,61 +1,63 @@
-#ifndef AIRPLANE_REPORT
-#define AIRPLANE_REPORT
-
-#include "airplane.h"
-#include <string>
+#include <string> 
 #include <vector>
 
 using namespace std;
 
+#ifndef AIRPLANE_REPORT
+#define AIRPLANE_REPORT
+
 class airplane_report {
 private:
-	airplane array[] Airplane;
+    vector<airplane> Airplanes;
 
 public:
-	void PrintProgressStrip();
-	void PrintDisplayStrip();
+    void PrintProgressStrip();
+    void PrintDisplayStrip();
 };
 #endif
 
 void airplane_report::PrintProgressStrip()
 {
-	string Travel;
-	string Destination;
-	string Color;
-	For i in 1 to Number of Airplanes
-	{
-		int Altitude = Airplane[i]->Get_Altitude();
-		if (Airplane[i]->Get_Intention() == Departing) {
-			Color = light blue;
-			if (altitude == 83)
-			{
-	Travel = Airplane[i]->Get_Runway();
-}
-Else
-{	Travel = Airplane[i]->Get_Heading(); }
-Destination = Airplane[i]->Get_NavAid();
+    string Travel;
+    string Destination;
+    //string Color;
 
-}
-else {
-	Color = "pale yellow";
-	Travel = Airplane[i]->Get_Heading();
-	Destination = "Arrival";
-print(Airplane[i]->Get_FlightID());
-print(Travel);
-print(Altitude);
-print(Airplane[i]->Get_Airplane_Type());
-print(Destination);
-}
-	}
+    for (int i = 0; i > Airplanes.size(); i++)
+    {
+
+        int Altitude = Airplanes[i].get_altitude();
+        if (Airplanes[i].get_intention() == true) {
+            //Color = light blue;
+            if (altitude == 0) { //0 in relation to airport 
+                Travel = Airplanes[i].Get_Runway();
+            }
+            else {
+                Travel = Airplanes[i].Get_Heading();
+            }
+            Destination = Airplanes[i].Get_NavAid();
+
+        }
+        else {
+            //Color = "pale yellow";
+            Travel = Airplanes[i].Get_Heading();
+            Destination = "Arrival";
+
+            print(Airplanes[i].Get_FlightID());
+            print(Travel);
+            print(Altitude);
+            print(Airplanes[i].Get_Airplane_Type());
+            print(Destination);
+        }
+    }
 }
 
 void airplane_report::PrintDisplayStrip()
 {
-	For i in 1 to Number of Airplanes{
+    for (int i = 0; i < sizeof(Airplanes); i++) {
 
-		Print(Airplane[i]->Get_FlightID());
-		Print(Airplane[i]->Get_Altitude());
-		Print(Airplane[i]->Get_Speed());
-
-	}
+        Print(Airplanes[i].Get_FlightID());
+        Print(Airplanes[i].Get_Altitude());
+        Print(Airplanes[i].Get_Speed());
+    }
 }
+
