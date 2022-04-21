@@ -52,27 +52,27 @@ bool airport::degree_clearance(int heading, int runwayID)
 	//	else return false;
 }
 
-bool airport::runway_availability(int runway)
+bool airport::runway_availability(int runwayID)
 {
-	int i = identify_runway(runway);
-	return runwayAvailable[i];
+	int i = identify_runway(runwayID);
+	return runways[i].available;
 }
 
-void airport::empty_runway(int runway)
+void airport::empty_runway(int runwayID)
 {
-	int i = identify_runway(runway);
-	runwayAvailable[i] = true;
+	int i = identify_runway(runwayID);
+	runways[i].available = true;
 }
 
 void airport::occupy_runway(int runway)
 {
 	int i = identify_runway(runway);
-	runwayAvailable[i] = false;
+	runways[i].available = false;
 }
 
 runway airport::get_runway(int runway)
 {
 	int i = identify_runway(runway);
-	return runwayEndPoints[i];
+	return runways[i];
 }
 

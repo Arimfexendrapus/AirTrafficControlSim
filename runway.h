@@ -13,6 +13,7 @@ struct runway {
 	int outHeading = 0;
 	int inHeading = outHeading + 180;
 	string test = "test";
+	bool available = false;
 };
 
 #endif
