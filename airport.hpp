@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "nav_aid.h"
-#include "runway.h"
+#include "nav_aid.hpp"
+#include "runway.hpp"
 
 using namespace std;
 

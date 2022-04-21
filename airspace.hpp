@@ -5,9 +5,9 @@
 #include <vector>
 #include <string>
 
-#include "airport.h"
-#include "aircraft.h"
-#include "nav_aid.h"
+#include "airport.hpp"
+#include "aircraft.hpp"
+#include "nav_aid.hpp"
 
 class airspace
 {

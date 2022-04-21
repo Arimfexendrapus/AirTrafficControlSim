@@ -17,14 +17,14 @@ ATC-SIM for the London-Heathrow Airport
 #include <string>
 #include <iomanip>
 
-#include "aircraft.h"
-#include "airplane.h"
-#include "airplane_report.h"
-#include "airport.h"
-#include "airspace.h"
-#include "nav_aid.h"
-#include "runway.h"
-#include "user_interface.h"
+#include "aircraft.hpp"
+#include "airplane.hpp"
+#include "airplane_report.hpp"
+#include "airport.hpp"
+#include "airspace.hpp"
+#include "nav_aid.hpp"
+#include "runway.hpp"
+#include "user_interface.hpp"
 
 
 using namespace std;

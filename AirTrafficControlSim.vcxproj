@@ -142,14 +142,14 @@
     <ClCompile Include="Driver.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="aircraft.h" />
-    <ClInclude Include="airplane.h" />
-    <ClInclude Include="airplane_report.h" />
-    <ClInclude Include="airport.h" />
-    <ClInclude Include="airspace.h" />
-    <ClInclude Include="nav_aid.h" />
-    <ClInclude Include="runway.h" />
-    <ClInclude Include="user_interface.h" />
+    <ClInclude Include="aircraft.hpp" />
+    <ClInclude Include="airplane.hpp" />
+    <ClInclude Include="airplane_report.hpp" />
+    <ClInclude Include="airport.hpp" />
+    <ClInclude Include="airspace.hpp" />
+    <ClInclude Include="nav_aid.hpp" />
+    <ClInclude Include="runway.hpp" />
+    <ClInclude Include="user_interface.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,9 +5,9 @@
 #define takeoffAltitude 5000
 
 //#include "airspace.h"
-#include "aircraft.h"
-#include "runway.h"
-#include "airport.h"
+#include "aircraft.hpp"
+#include "runway.hpp"
+#include "airport.hpp"
 #include <string>
 #include <vector>
 
