@@ -15,33 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="airplane.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="airport.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="airspace.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="user_interface.cpp">
+    <ClCompile Include="Driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="airplane.h">
+    <ClInclude Include="airplane.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="airport.h">
+    <ClInclude Include="airport.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="aircraft.h">
+    <ClInclude Include="aircraft.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="nav_aid.h">
+    <ClInclude Include="nav_aid.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="airspace.h">
+    <ClInclude Include="airspace.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user_interface.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="airplane_report.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="runway.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
