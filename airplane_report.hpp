@@ -44,13 +44,13 @@ void airplane_report::PrintProgressStrip()
             //Color = "pale yellow";
             Travel = Airplanes[i].get_heading();
             Destination = "Arrival";
-
+        }
             cout << Airplanes[i].get_flightID() << endl;
             cout << Travel << endl;
             cout << Altitude << endl;
             cout << Airplanes[i].Aircraft.aircraft_name << endl;
             cout << Destination << endl;
-        }
+        
     }
 }
 
