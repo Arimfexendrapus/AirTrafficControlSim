@@ -70,6 +70,7 @@ public:
 
 	// contructor
 	airplane();
+	airplane(string fID, aircraft type); // constructor passed flight id
 };
 #endif
 
@@ -291,4 +292,26 @@ airplane::airplane()
 	isCleared = false;
 	departing = false;
 	Runway = &b;
+}
+
+airplane::airplane(string fID, aircraft type)
+{
+	flightID = fID;
+	Aircraft = type;
+	speed = 0;
+	altitude = 0;
+	heading = 0;
+
+	flightCoordinates.push_back(0);
+	flightCoordinates.push_back(0);
+	flightCoordinates.push_back(0);
+	boundForCoordinates.push_back(0);
+	boundForCoordinates.push_back(0);
+	boundForCoordinates.push_back(0);
+	finalDestination.push_back(0);
+	finalDestination.push_back(0);
+	finalDestination.push_back(0);
+	isCleared = false;
+	departing = false;
+	Runway = NULL;
 }
