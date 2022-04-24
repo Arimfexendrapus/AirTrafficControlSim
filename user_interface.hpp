@@ -14,7 +14,6 @@
 #include <iostream>
 #include <algorithm>
 
-
 #include "airplane_report.hpp"
 #include "airspace.hpp"
 #include <string>
@@ -68,8 +67,8 @@ User_Interface::User_Interface(airspace *as, airplane_report *apr)
         }
         else
         {
-            this->Parse_Input(input);                            // send the command to be parsed
-            cout << returnMessage << endl;                       // print the message to the user
+            this->Parse_Input(input);            // send the command to be parsed
+            cout << returnMessage << endl;       // print the message to the user
             Report_Object->PrintProgressStrip(); // print the progress and display strips
             Report_Object->PrintDisplayStrip();
         }
@@ -95,7 +94,7 @@ void User_Interface::Parse_Input(string input)
     bool multi = true;            // will rerun the parsing logic if multiple commands strung together
     string parameter = "";
     // string used to hold the parameters for a command if applicable
-
+    bool validParam = true; // used to validate parameter where necessary
     // get rid of preceeding spaces if necessary
     while (input[0] == ' ')
     {
@@ -127,20 +126,30 @@ void User_Interface::Parse_Input(string input)
     // buffer overrun
     if (size < 1)
     {
-        returnMessage = "Invalid Command: Not enough information supplied";
+        returnMessage = "Invalid Command: Not enough information supplied\n";
         return;
     }
-    while (multi) // put main logic in loop to continue if multiple commands are strung together
+
+    command = input[index]; // the next character should be a command
+    index += 2;             // increment index
+    size -= 2;              // decrement size taking into account trailing space
+    while (multi)           // put main logic in loop to continue if multiple commands are strung together
     {
+        validParam = true;
         parameter = "";
-        command = input[index]; // the next character should be a command
-        index += 2;             // increment index
-        size -= 2;              // decrement size taking into account trailing space
-        if (command == 'c')     // if clearance
+        turning = 'n';
+        /*
+        C - Cleared
+        Parameters:
+            Nav Point: navigation point identifier
+            Heading: 3 digits representing degrees
+            Altitude: up to 2 digits representing multiples of 1,000 units
+        */
+        if (command == 'c')
         {
             if (debugging)
             {
-                returnMessage += planeID + " issued clearance";
+                returnMessage += planeID + " issued clearance\n";
             }
             // make sure there are parameters supplied
             if (size < 1)
@@ -162,21 +171,50 @@ void User_Interface::Parse_Input(string input)
 
             if (isdigit(parameter[0]) && (int)parameter.size() == 3) // if it is a heading
             {
-                // need to check and see if there is a direction specified
-                // if there is more input make sure you are only taking if its a r or l character
-                if (size >= 1 && (input[index] == 'r' || input[index] == 'l')) // could be another command strung to the end
+                // validate 3 digit number is supplied
+                for (int x = 0; x < (int)parameter.size(); x++)
                 {
-                    turning = input[index];
-                    index++;
-                    size -= 1;
+                    if (isdigit(parameter[x]) == false)
+                    {
+                        validParam = false;
+                    }
                 }
-                index++;
-                size -= 1;
-                returnMessage += Airspace_Object->Clear_Aircraft(planeID, stoi(parameter), turning) + "\n";
+                if (validParam) // if the parameter is an integer
+                {
+                    // need to check and see if there is a direction specified
+                    // if there is more input make sure you are only taking if its a r or l character
+                    if (size >= 1 && (input[index] == 'r' || input[index] == 'l')) // could be another command strung to the end
+                    {
+                        turning = input[index];
+                        index += 2;
+                        size -= 2;
+                    }
+                    // index++;
+                    // size -= 1;
+                    returnMessage += Airspace_Object->clear_aircraft(planeID, stoi(parameter), turning) + "\n";
+                }
+                else
+                {
+                    returnMessage += "\nInvalid Command: Heading parameter must be 3 integer digits\n";
+                }
             }
             else if (isdigit(parameter[0])) // if it isnt a heading but still a number treat it as altitude
             {
-                returnMessage += Airspace_Object->Clear_Aircraft(planeID, stoi(parameter)) + "\n";
+                for (int x = 0; x < (int)parameter.size(); x++)
+                {
+                    if (isdigit(parameter[x]) == false)
+                    {
+                        validParam = false;
+                    }
+                }
+                if (validParam)
+                {
+                    returnMessage += Airspace_Object->clear_aircraft(planeID, stoi(parameter)) + "\n";
+                }
+                else
+                {
+                    returnMessage += "\nInvalid Command: Altitude parameter must consist of all integers\n";
+                }
             }
             else // else treat it as a navpoint
             {
@@ -185,54 +223,174 @@ void User_Interface::Parse_Input(string input)
                 if (size >= 1 && (input[index] == 'r' || input[index] == 'l')) // could be another command strung to the end
                 {
                     turning = input[index];
-                    index++;
-                    size -= 1;
+                    index += 2;
+                    size -= 2;
                 }
-                index++;
-                size -= 1;
-                returnMessage += Airspace_Object->Clear_Aircraft(planeID, parameter, turning) + "\n";
+                returnMessage += Airspace_Object->clear_aircraft(planeID, parameter, turning) + "\n";
             }
         }
+        /*
+        L - Landing
+        Parameters:
+            Runway: runway identifier
+        */
+        else if (command == 'l')
+        {
+            if (debugging)
+            {
+                returnMessage += "\n" + planeID + "issued hold";
+            }
+            // make sure there are parameters supplied
+            if (size < 1)
+            { // if there is no parameter then throw error
+                returnMessage = "Invalid Command: Parameters required for takeoff command\n";
+                return;
+            }
+            // retrieve parameter for land from input string
+            while (input[index] != ' ' && size > 0) // get all the characters up to the next space
+            {
+                parameter += input[index]; // add the chars to the parameter string
+                index++;
+                size -= 1;
+            }
+            // account for possible space
+            index++;
+            size -= 1;
+            // invoke the land method
+            returnMessage += Airspace_Object->land_aircraft(planeID, parameter);
+        }
+        /*
+        H - Hold
+        Parameters:
+            Nav Point: navigation point identifier
+        */
         else if (command == 'h')
         {
             if (debugging)
             {
-                returnMessage += planeID + "issued hold";
+                returnMessage += "\n" + planeID + "issued hold";
             }
+            // make sure there are parameters supplied
+            if (size < 1)
+            { // if there is no parameter then throw error
+                returnMessage = "Invalid Command: Parameters required for hold command\n";
+                return;
+            }
+
+            // retrieve parameter for hold from input string
+            while (input[index] != ' ' && size > 0) // get all the characters up to the next space
+            {
+                parameter += input[index]; // add the chars to the parameter string
+                index++;
+                size -= 1;
+            }
+            // account for possible space
+            index++;
+            size -= 1;
+
+            // invoke the hold method of the airspace class
+            returnMessage += Airspace_Object->hold_aircraft(planeID, parameter);
         }
+        /*
+        T - Takeoff
+        Parameters: NONE
+        */
         else if (command == 't')
         {
             if (debugging)
             {
-                returnMessage += planeID + "issued takeoff";
+                returnMessage += "\n" + planeID + "issued takeoff";
             }
+            returnMessage += Airspace_Object->takeoff_aircraft(planeID);
         }
+        /*
+        S - Set aircraft speed
+        Parameters:
+            Speed: speed in set units
+        */
         else if (command == 's')
         {
             if (debugging)
             {
-                returnMessage += planeID + "issued speed";
+                returnMessage += "\n" + planeID + "issued speed";
+            }
+            // make sure there are parameters supplied
+            if (size < 1)
+            { // if there is no parameter then throw error
+                returnMessage = "Invalid Command: Parameters required for hold command";
+                return;
+            }
+
+            // retrieve parameter for hold from input string
+            while (input[index] != ' ' && size > 0) // get all the characters up to the next space
+            {
+                parameter += input[index]; // add the chars to the parameter string
+                index++;
+                size -= 1;
+            }
+            // account for possible space
+            index++;
+            size -= 1;
+            // need to varify that an integer was supplied
+            for (int x = 0; x < (int)parameter.size(); x++)
+            {
+                if (isdigit(parameter[x]) == false)
+                {
+                    validParam = false;
+                }
+            }
+            if (validParam) // if the parameter is an integer
+            {
+                returnMessage += Airspace_Object->set_aircraft_speed(planeID, stoi(parameter));
+            }
+            else
+            {
+                returnMessage += "\nInvalid Command: Speed parameter must be an integer";
             }
         }
+        /*
+        W - Line up and wait
+        Parameters: NONE
+        */
         else if (command == 'w')
         {
             if (debugging)
             {
                 returnMessage += planeID + "issued wait";
             }
+            returnMessage += Airspace_Object->wait_aircraft(planeID);
         }
+        /*
+        A - Abort current action
+        Parameters: NONE
+        */
         else if (command == 'a')
         {
             if (debugging)
             {
                 returnMessage += planeID + "issued abort";
             }
+            returnMessage += Airspace_Object->abort_aircraft(planeID);
+        }
+        // if there isn't a valid command supplied
+        else
+        {
+            returnMessage += "\nInvalid Command: ";
+            returnMessage.push_back(command);
+            return;
+        }
+
+        // basicall just loop again in there is still stuff in the input string
+        if (size < 1)
+        {
+            multi = false;
         }
         else
         {
-            // returnMessage += "Invalid Command";
-            return;
+            command = input[index];
+            index += 2;
+            size -= 2;
+            multi = true;
         }
-        // multi = false;
     }
 }
