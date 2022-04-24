@@ -23,7 +23,7 @@ class airplane
 {
 private:
 	string flightID;
-	
+
 	int speed;
 	int altitude;
 	int heading;
@@ -33,8 +33,8 @@ private:
 	bool isCleared;
 	bool departing;
 	runway *Runway;
-public:
 
+public:
 	aircraft Aircraft;
 
 	bool land(airport Airport);
@@ -53,7 +53,7 @@ public:
 	bool set_course(vector<int> Coordinates);
 	vector<int> get_course();
 
-	bool set_intention(bool boolean);  //true is departing, false is arriving
+	bool set_intention(bool boolean); // true is departing, false is arriving
 	bool get_intention();
 
 	bool set_coordinates(vector<int> Coordinates);
@@ -68,20 +68,21 @@ public:
 	bool set_clearance(bool clear);
 	bool get_clearance();
 
-	//contructor
+	// contructor
 	airplane();
 };
 #endif
 
 bool airplane::land(airport Airport)
 {
-	if (altitude <= 3000 && Airport.degree_clearance(heading, Runway->runwayID)==1)
+	if (altitude <= 3000 && Airport.degree_clearance(heading, Runway->runwayID) == 1)
 	{
-		int distance = 0;/*(distance between aircraft and runway)*/
-		int howLong = 0; /*distance / speed */
-		int toDecel = 0; /*distance / aircraft.acceleration[1]*/
-		if (howLong < toDecel) set_speed(0);
-		
+		int distance = 0; /*(distance between aircraft and runway)*/
+		int howLong = 0;  /*distance / speed */
+		int toDecel = 0;  /*distance / aircraft.acceleration[1]*/
+		if (howLong < toDecel)
+			set_speed(0);
+
 		set_course(Runway->endlocation);
 	}
 }
@@ -94,24 +95,31 @@ bool airplane::takeOff(vector<int> Coordinates)
 		set_speed(takeoffSpeed);
 		set_altitude(takeoffAltitude);
 	}
-	if (boundForCoordinates == Coordinates) return true;
-	else return false;
+	if (boundForCoordinates == Coordinates)
+		return true;
+	else
+		return false;
 }
 
 bool airplane::set_speed(int givenSpeed)
 {
-	if (givenSpeed > Aircraft.aircraft_max_speed) return false;
+	if (givenSpeed > Aircraft.aircraft_max_speed)
+		return false;
 	while (speed != givenSpeed)
 	{
 		if (speed > givenSpeed)
 		{
-			if (speed - Aircraft.aircraft_acceleration[1] < givenSpeed) speed = givenSpeed;
-			else speed -= Aircraft.aircraft_acceleration[1];
+			if (speed - Aircraft.aircraft_acceleration[1] < givenSpeed)
+				speed = givenSpeed;
+			else
+				speed -= Aircraft.aircraft_acceleration[1];
 		}
 		else if (speed < givenSpeed)
 		{
-			if (speed + Aircraft.aircraft_acceleration[0] > givenSpeed) speed = givenSpeed;
-			else speed += Aircraft.aircraft_acceleration[0];
+			if (speed + Aircraft.aircraft_acceleration[0] > givenSpeed)
+				speed = givenSpeed;
+			else
+				speed += Aircraft.aircraft_acceleration[0];
 		}
 		Sleep(1000);
 	}
@@ -129,13 +137,17 @@ bool airplane::set_altitude(int givenAltitude)
 	{
 		if (altitude > givenAltitude)
 		{
-			if (altitude - Aircraft.aircraft_elevation_rate < givenAltitude) altitude = givenAltitude;
-			else altitude -= Aircraft.aircraft_elevation_rate;
+			if (altitude - Aircraft.aircraft_elevation_rate < givenAltitude)
+				altitude = givenAltitude;
+			else
+				altitude -= Aircraft.aircraft_elevation_rate;
 		}
 		else if (altitude < givenAltitude)
 		{
-			if (altitude + Aircraft.aircraft_elevation_rate > givenAltitude) altitude = givenAltitude;
-			else altitude += Aircraft.aircraft_elevation_rate;
+			if (altitude + Aircraft.aircraft_elevation_rate > givenAltitude)
+				altitude = givenAltitude;
+			else
+				altitude += Aircraft.aircraft_elevation_rate;
 		}
 		Sleep(1000);
 	}
@@ -150,13 +162,15 @@ int airplane::get_altitude()
 bool airplane::set_heading(int Heading)
 {
 	heading = Heading;
-	if (heading == Heading) return true;
-	else return false;
+	if (heading == Heading)
+		return true;
+	else
+		return false;
 }
 
 bool airplane::set_heading(int Heading, char direction)
 {
-	//Need to ask for clarification
+	// Need to ask for clarification
 	return true;
 }
 
@@ -170,8 +184,10 @@ bool airplane::set_course(vector<int> Coordinates)
 	boundForCoordinates[0] = Coordinates[0];
 	boundForCoordinates[1] = Coordinates[1];
 	boundForCoordinates[2] = Coordinates[2];
-	if (Coordinates == boundForCoordinates) return true;
-	else return false;
+	if (Coordinates == boundForCoordinates)
+		return true;
+	else
+		return false;
 }
 
 vector<int> airplane::get_course()
@@ -185,10 +201,12 @@ vector<int> airplane::get_course()
 
 bool airplane::set_intention(bool boolean)
 {
-	//true is departing, false is arriving
+	// true is departing, false is arriving
 	departing = boolean;
-	if (departing == boolean) return true;
-	else return false;
+	if (departing == boolean)
+		return true;
+	else
+		return false;
 }
 
 bool airplane::get_intention()
@@ -201,8 +219,10 @@ bool airplane::set_coordinates(vector<int> Coordinates)
 	flightCoordinates[0] = Coordinates[0];
 	flightCoordinates[1] = Coordinates[1];
 	flightCoordinates[2] = Coordinates[2];
-	if (Coordinates == flightCoordinates) return true;
-	else return false;
+	if (Coordinates == flightCoordinates)
+		return true;
+	else
+		return false;
 }
 
 vector<int> airplane::get_coordinates()
@@ -217,8 +237,10 @@ vector<int> airplane::get_coordinates()
 bool airplane::set_runway(int runwayID, airport Airport)
 {
 	Runway = &Airport.get_runway(runwayID);
-	if (Runway->runwayID == runwayID) return true;
-	else return false;
+	if (Runway->runwayID == runwayID)
+		return true;
+	else
+		return false;
 }
 
 int airplane::get_runway()
@@ -229,8 +251,10 @@ int airplane::get_runway()
 bool airplane::set_flightID(string FlightID)
 {
 	flightID = FlightID;
-	if (flightID == FlightID) return true;
-	else return false;
+	if (flightID == FlightID)
+		return true;
+	else
+		return false;
 }
 
 string airplane::get_flightID()
@@ -241,15 +265,16 @@ string airplane::get_flightID()
 bool airplane::set_clearance(bool clear)
 {
 	isCleared = clear;
-	if (isCleared == clear) return true;
-	else return false;
+	if (isCleared == clear)
+		return true;
+	else
+		return false;
 }
 
 bool airplane::get_clearance()
 {
 	return isCleared;
 }
-
 
 airplane::airplane()
 {
@@ -260,9 +285,9 @@ airplane::airplane()
 	speed = 0;
 	altitude = 0;
 	heading = 0;
-	flightCoordinates = { 0,0,0 };
-	boundForCoordinates = { 0,0,0 };
-	finalDestination = { 0,0,0 };
+	flightCoordinates = {0, 0, 0};
+	boundForCoordinates = {0, 0, 0};
+	finalDestination = {0, 0, 0};
 	isCleared = false;
 	departing = false;
 	Runway = &b;

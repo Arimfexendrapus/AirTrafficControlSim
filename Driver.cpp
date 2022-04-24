@@ -10,9 +10,6 @@ ATC-SIM for the London-Heathrow Airport
 
 */
 
-
-
-
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -26,18 +23,16 @@ ATC-SIM for the London-Heathrow Airport
 #include "runway.hpp"
 #include "user_interface.hpp"
 
-
 using namespace std;
 
 int main()
 {
-	cout << "This is a start" << endl;
+    cout << "This is a start" << endl;
 
-    airspace AirspaceObject;
-    airplane_report ReportObject;
+    // airspace AirspaceObject;
+    // airplane_report ReportObject;
 
-    User_Interface InterfaceObject(AirspaceObject, ReportObject);
+    // user_interface InterfaceObject(AirspaceObject, ReportObject);
 
     return 0;
-
 }

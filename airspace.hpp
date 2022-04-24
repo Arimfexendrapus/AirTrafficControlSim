@@ -13,13 +13,13 @@ class airspace
 {
 private:
     vector<string> FlightIDs;
-    vector<aircraft*> Aircraft;
+    vector<airplane*> Airplane;
     vector<nav_aid> NavAids; // vector of navaid structs
     airport* Airport_Object;
     string ReturnMessage;
 
 public:
-    airspace(vector<aircraft*> apVector, airport* aPort);
+    airspace(vector<airplane*> apVector, airport* aPort);
     void generate_airplane();
     string clear_aircraft(string FlightID, string NavPoint, char Directrion);
     string clear_aircraft(string FlightID, int heading, char Directrion);
@@ -33,8 +33,8 @@ public:
 };
 #endif
 
-airspace::airspace(vector<aircraft*> apVector, airport* aPort) {
-    Aircraft = apVector;
+airspace::airspace(vector<airplane*> apVector, airport* aPort) {
+    Airplane = apVector;
     Airport_Object = aPort;
     ReturnMessage = "";
     NavAids = /*GENERATE ALL NAVAIDS STRUCTURES AND PUSH INTO THIS VARIABLE*/;
