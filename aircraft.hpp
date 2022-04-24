@@ -20,20 +20,26 @@ struct aircraft
 		NOTE:
 		standardized value for each does not account for change based
 		on elevation and speed just constant the whole time
+		THIS IS IN THE X COORDINATE PLANE
+		***
+		REMEMBER acceleration = change in velocity / change in time
+
 	*/
-	int aircraft_acceleration[2];
+	float aircraft_acceleration[2];
 
 	/*
-		Units: meters/second^2
+		Units: meters/second
 		index 0: climb rate
 		index 1: descent rate
+		THIS IS IN THE Y COORDINATE PLANE
 	*/
-	int aircraft_elevation_rate[2];
-	int aircraft_max_speed;	   // meters per second
+	float aircraft_elevation_rate[2];
+	int aircraft_max_speed;	   // kilometers per hour
 	int aircraft_max_altitude; // meters
 };
 
-vector<aircraft> GetAircraftInfo(){
+vector<aircraft> GetAircraftInfo()
+{
 	vector<aircraft> aircraftHold;
 	/*
 
@@ -49,7 +55,16 @@ vector<aircraft> GetAircraftInfo(){
 
 */
 	aircraft ac1;
+	// aircraft ac2;
+	// aircraft ac3;
 	ac1.aircraft_name = "Boeing 737-800";
+	ac1.aircraft_acceleration[0] = 1.96;
+	ac1.aircraft_acceleration[1] = 1.96;
+	ac1.aircraft_elevation_rate[0] = 15.24;
+	ac1.aircraft_elevation_rate[1] = 5.08;
+	ac1.aircraft_max_speed = 946;	   // kmh
+	ac1.aircraft_max_altitude = 12496; // meters
+	aircraftHold.push_back(ac1);
 
 	return aircraftHold;
 }
