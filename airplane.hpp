@@ -279,8 +279,8 @@ bool airplane::get_clearance()
 
 airplane::airplane()
 {
+	Runway = NULL;
 	aircraft a;
-	runway b;
 	flightID = "default";
 	Aircraft = a;
 	speed = 0;
@@ -291,7 +291,6 @@ airplane::airplane()
 	finalDestination = {0, 0, 0};
 	isCleared = false;
 	departing = false;
-	Runway = &b;
 }
 
 airplane::airplane(string fID, aircraft type)
