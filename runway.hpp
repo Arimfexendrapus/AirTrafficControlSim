@@ -9,8 +9,8 @@ using namespace std;
 struct runway_ends
 {
 	string runwayID;
-	vector<int> coordinates
-	int heading
+	vector<int> coordinates;
+	int heading;
 	bool available;			   // is it available
 };
 

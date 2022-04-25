@@ -46,9 +46,9 @@ bool airport::degree_clearance(int heading, string runwayID)
 {
 	int i = identify_runway(runwayID);
 
-	if (heading > runways[i].leftHeading - 30)
+	if (heading > runways[i].heading - 30)
 	{
-		if (heading < runways[i].leftHeading + 30)
+		if (heading < runways[i].heading + 30)
 		{
 			return true;
 		}
