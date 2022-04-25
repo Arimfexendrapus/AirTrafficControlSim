@@ -57,8 +57,8 @@ bool airport::degree_clearance(int heading, string runwayID, airplane* Plane)
 
 	int refAngle = abs((180 / pi) * 
 		arccos((Plane->get_coordinates() - runways[i].coordinates) / // divided by
-		((planeCoords[0] - runwayEndPoints[i].Coordinates[0]) ^ 2 +
-			(planeCoords[1] - runwayEndPoints[i].Coordinates[1]) ^ 2) ^ (1 / 2))); // cos^-1(a/h)
+		((Plane->get_coordinates() - runways[i].coordinates) ^ 2 +
+			(Plane->get_coordinates() - runways[i].coordinates) ^ 2) ^ (1 / 2))); // cos^-1(a/h)
 	if (refAngle <= 30)
 	{
 		return true;
