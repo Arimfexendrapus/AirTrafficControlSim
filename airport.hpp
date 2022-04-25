@@ -16,7 +16,7 @@ private:
 	vector<runway_ends> runways; // contains runways
 public:
 	airport(); // constructor
-	bool degree_clearance(int heading, string runwayID);
+	bool degree_clearance(int heading, string runwayID, airplane* Plane);
 	bool runway_availability(string runwayID);
 	runway_ends get_runway(string runwayID);
 	void empty_runway(string runwayID);
