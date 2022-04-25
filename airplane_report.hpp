@@ -49,7 +49,11 @@ void airplane_report::PrintProgressStrip()
             cout << Travel << endl;
             cout << Altitude << endl;
             cout << Airplanes[i].Aircraft.aircraft_name << endl;
-            cout << Destination << endl;
+            for (int i = 0; i < Destination.size(); i++)
+            {
+                cout << Destination[i] << endl;
+            }
+
         
     }
 }
@@ -58,9 +62,9 @@ void airplane_report::PrintDisplayStrip()
 {
     for (int i = 0; i < Airplanes.size(); i++) 
     {
-        cout << Airplanes[i].Get_FlightID() << endl;
-        cout << Airplanes[i].Get_Altitude() << endl;
-        cout << Airplanes[i].Get_Speed() << endl;
+        cout << Airplanes[i].get_flightID() << endl;
+        cout << Airplanes[i].get_altitude() << endl;
+        cout << Airplanes[i].get_speed() << endl;
     }
 }
 

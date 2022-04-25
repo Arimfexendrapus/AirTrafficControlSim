@@ -24,8 +24,8 @@ class airplane
 private:
 	string flightID;
 
-	int speed;
-	int altitude;
+	double speed;
+	double altitude;
 	int heading;
 	vector<int> flightCoordinates;
 	vector<int> boundForCoordinates;
@@ -40,11 +40,11 @@ public:
 	bool land(airport Airport);
 	bool takeOff(vector<int> Coordinates);
 
-	bool set_speed(int Speed);
-	int get_speed();
+	bool set_speed(double Speed);
+	double get_speed();
 
-	bool set_altitude(int Altitutde);
-	int get_altitude();
+	bool set_altitude(double Altitude);
+	double get_altitude();
 
 	bool set_heading(int Heading);
 	bool set_heading(int Heading, char direction);
@@ -59,8 +59,8 @@ public:
 	bool set_coordinates(vector<int> Coordinates);
 	vector<int> get_coordinates();
 
-	bool set_runway(int runwayID, airport Airport);
-	int get_runway();
+	bool set_runway(string runwayID, airport Airport);
+	string get_runway();
 
 	bool set_flightID(string FlightID);
 	string get_flightID();
@@ -102,7 +102,7 @@ bool airplane::takeOff(vector<int> Coordinates)
 		return false;
 }
 
-bool airplane::set_speed(int givenSpeed)
+bool airplane::set_speed(double givenSpeed)
 {
 	if (givenSpeed > Aircraft.aircraft_max_speed)
 		return false;
@@ -127,35 +127,36 @@ bool airplane::set_speed(int givenSpeed)
 	return true;
 }
 
-int airplane::get_speed()
+double airplane::get_speed()
 {
 	return speed;
 }
 
-bool airplane::set_altitude(int givenAltitude)
+bool airplane::set_altitude(double givenAltitude)
 {
+
 	while (altitude != givenAltitude)
 	{
 		if (altitude > givenAltitude)
 		{
-			if (altitude - Aircraft.aircraft_elevation_rate < givenAltitude)
+			if (altitude - Aircraft.aircraft_elevation_rate[0] < givenAltitude)
 				altitude = givenAltitude;
 			else
-				altitude -= Aircraft.aircraft_elevation_rate;
+				altitude -= Aircraft.aircraft_elevation_rate[0];
 		}
 		else if (altitude < givenAltitude)
 		{
-			if (altitude + Aircraft.aircraft_elevation_rate > givenAltitude)
+			if (altitude + Aircraft.aircraft_elevation_rate[1] > givenAltitude)
 				altitude = givenAltitude;
 			else
-				altitude += Aircraft.aircraft_elevation_rate;
+				altitude += Aircraft.aircraft_elevation_rate[1];
 		}
 		Sleep(1000);
 	}
 	return true;
 }
 
-int airplane::get_altitude()
+double airplane::get_altitude()
 {
 	return altitude;
 }
@@ -235,7 +236,7 @@ vector<int> airplane::get_coordinates()
 	return Coordinates;
 }
 
-bool airplane::set_runway(int runwayID, airport Airport)
+bool airplane::set_runway(string runwayID, airport Airport)
 {
 	Runway = &Airport.get_runway(runwayID);
 	if (Runway->runwayID == runwayID)
@@ -244,7 +245,7 @@ bool airplane::set_runway(int runwayID, airport Airport)
 		return false;
 }
 
-int airplane::get_runway()
+string airplane::get_runway()
 {
 	return Runway->runwayID;
 }
