@@ -10,8 +10,8 @@ struct runway_ends
 {
 	string runwayID;
 	vector<int> coordinates;
-	int heading;
-	bool available;			   // is it available
+	int heading = 0;
+	bool available = false;			   // is it available
 };
 
 vector<runway_ends> runwayInfo()

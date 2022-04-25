@@ -34,15 +34,14 @@ int airport::identify_runway(string runwayID)
 {
 	for (int i = 0; i < runways.size(); i++)
 	{
-		if (runwayID == runways[i].runwayID[0]) return i;
-		if (runwayID == runways[i].runwayID[1]) return i;
+		if (runwayID == runways[i].runwayID) return i;
 	}
 
 	return -1;
 	// if invalid runway name what should we do in this case? or is it already checked
 }
 
-bool airport::degree_clearance(int heading, string runwayID)
+bool airport::degree_clearance(int heading, string runwayID, airplane* Plane)
 {
 	int i = identify_runway(runwayID);
 
@@ -55,10 +54,11 @@ bool airport::degree_clearance(int heading, string runwayID)
 	}
 	return false;
 	/*------------------- To Be Combined ------------------------------------*/
-	int refAngle = abs((180 / pi) * arccos(
-										(planeCoords[0] - runwayEndPoints[i].Coordinates[0]) // divided by
-											/ ((planeCoords[0] - runwayEndPoints[i].Coordinates[0]) ^ 2 + (planeCoords[1] - runwayEndPoints[i].Coordinates[1]) ^ 2) ^
-										(1 / 2))); // cos^-1(a/h)
+
+	int refAngle = abs((180 / pi) * 
+		arccos((Plane->get_coordinates() - runways[i].coordinates) / // divided by
+		((planeCoords[0] - runwayEndPoints[i].Coordinates[0]) ^ 2 +
+			(planeCoords[1] - runwayEndPoints[i].Coordinates[1]) ^ 2) ^ (1 / 2))); // cos^-1(a/h)
 	if (refAngle <= 30)
 	{
 		return true;
