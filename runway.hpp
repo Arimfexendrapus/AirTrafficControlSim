@@ -25,7 +25,7 @@ vector<runway> runwayInfo()
 	vector<runway> local;
 
 	runway top; // the "upper" runway
-	runway bot; // the "lowwer" runway
+	runway bot; // the "lower" runway
 	top.runwayID[0] = "9l";
 	top.runwayID[1] = "27r";
 	top.startlocation.push_back(-1950); // x

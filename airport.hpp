@@ -33,8 +33,8 @@ int airport::identify_runway(string runwayID)
 {
 	for (int i = 0; i < runways.size(); i++)
 	{
-		if (runwayID == runways[i].runwayID)
-			return i;
+		if (runwayID == runways[i].runwayID[0]) return i;
+		if (runwayID == runways[i].runwayID[1]) return i;
 	}
 
 	return -1;
