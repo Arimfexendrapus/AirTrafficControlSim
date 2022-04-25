@@ -7,6 +7,7 @@
 #include <random>
 
 #include "airport.hpp"
+#include "airplane.hpp"
 #include "aircraft.hpp"
 #include "nav_aid.hpp"
 
@@ -32,6 +33,7 @@ public:
     string set_aircraft_speed(string FlightID, int Speed);
     string wait_aircraft(string FlightID);
     string abort_aircraft(string FlightID);
+    int identify_flight(string FlightID);
 };
 #endif
 
@@ -91,17 +93,25 @@ void airspace::generate_airplane()
     TempCraft = AircraftInfo[rdom % 5];
 }
 
-
-string airspace::abort_aircraft(string FlightID){
-
-    airplane* locAirplan = NULL;
-    for(int x=0; x<(int)AirplaneVec.size(); x++){
-        if(FlightID == AirplaneVec[x]->get_flightID()){
-            locAirplan = AirplaneVec[x];
+int airspace::identify_flight(string FlightID)
+{
+    for (int i = 0; i < AirplaneVec.size(); i++)
+    {
+        if (FlightID == AirplaneVec[i]->get_flightID())
+        {
+            return i;
         }
     }
-    if(locAirplan == NULL){
-        return "Invalid flight id";
+    return -1;
+}
+
+string airspace::abort_aircraft(string FlightID)
+{
+    int aircraftLoc = identify_flight(FlightID);
+    if (aircraftLoc != -1)
+    {
+        AirplaneVec[aircraftLoc]->abort();
+        return "abort started";
     }
-    locAirplan->
+    else return "invalid ID";
 }

@@ -2,6 +2,7 @@
 #define NAV_AID
 
 #include <string>
+#include <vector>
 
 struct nav_aid
 {
