@@ -23,8 +23,8 @@ vector<runway_ends> runwayInfo()
 	runway_ends topLeft;  // the "upper" runway
 	runway_ends botLeft;  // the "lower" runway
 
-	topLeft.runwayID = "9l";
-	topRight.runwayID = "27r";
+	topLeft.runwayID = "9L";
+	topRight.runwayID = "27R";
 
 	topLeft.coordinates.push_back(-1950);  // x
 	topLeft.coordinates.push_back(685);    // y
@@ -40,8 +40,8 @@ vector<runway_ends> runwayInfo()
 	topLeft.available = true;
 	topRight.available = topLeft.available;
 
-	botLeft.runwayID = "9r";
-	botRight.runwayID = "27l";
+	botLeft.runwayID = "9R";
+	botRight.runwayID = "27L";
 	botLeft.coordinates.push_back(-1709); // x
 	botLeft.coordinates.push_back(-685);	// y
 	botLeft.coordinates.push_back(0);	// z
