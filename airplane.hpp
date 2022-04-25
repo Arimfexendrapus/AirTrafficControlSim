@@ -32,7 +32,7 @@ private:
 	vector<int> finalDestination;
 	bool isCleared;
 	bool departing;
-	runway *Runway;
+	runway_ends *Runway;
 
 public:
 	aircraft Aircraft;

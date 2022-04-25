@@ -13,12 +13,12 @@ using namespace std;
 class airport
 {
 private:
-	vector<runway> runways; // contains runways
+	vector<runway_ends> runways; // contains runways
 public:
 	airport(); // constructor
 	bool degree_clearance(int heading, string runwayID);
 	bool runway_availability(string runwayID);
-	runway get_runway(string runwayID);
+	runway_ends get_runway(string runwayID);
 	void empty_runway(string runwayID);
 	void occupy_runway(string runwayID);
 	int identify_runway(string runwayID);
@@ -87,7 +87,7 @@ void airport::occupy_runway(string runway)
 	runways[i].available = false;
 }
 
-runway airport::get_runway(string runway)
+runway_ends airport::get_runway(string runway)
 {
 	int i = identify_runway(runway);
 	return runways[i];

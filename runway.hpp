@@ -6,48 +6,60 @@
 
 using namespace std;
 
-struct runway
+struct runway_ends
 {
-	/*
-		index 0: left side id
-		index 1: right side id
-	*/
 	string runwayID;
-	vector<int> startlocation; // left side coordinates
-	vector<int> endlocation;   // right side coordinates
-	int leftHeading;		   // heading coming out from the left
-	int rightHeading;		   // heading coming out from the right
+	vector<int> coordinates
+	int heading
 	bool available;			   // is it available
 };
 
-vector<runway> runwayInfo()
+vector<runway_ends> runwayInfo()
 {
-	vector<runway> local;
+	vector<runway_ends> local;
 
-	runway top; // the "upper" runway
-	runway bot; // the "lower" runway
-	top.runwayID[0] = "9l";
-	top.runwayID[1] = "27r";
-	top.startlocation.push_back(-1950); // x
-	top.startlocation.push_back(685);	// y
-	top.endlocation.push_back(1950);	// x
-	top.endlocation.push_back(685);		// y
-	top.leftHeading = 270;				// base heading around the center coordinate
-	top.rightHeading = 90;
-	top.available = true;
+	runway_ends topRight; // the "upper" runway
+	runway_ends botRight; // the "lower" runway
+	runway_ends topLeft;  // the "upper" runway
+	runway_ends botLeft;  // the "lower" runway
 
-	bot.runwayID[0] = "9r";
-	bot.runwayID[1] = "27l";
-	bot.startlocation.push_back(-1709); // x
-	bot.startlocation.push_back(-685);	// y
-	bot.endlocation.push_back(1950);	// x
-	bot.endlocation.push_back(-685);	// y
-	bot.leftHeading = 270;				// base heading around the center coordinate
-	bot.rightHeading = 90;
-	bot.available = true;
+	topLeft.runwayID = "9l";
+	topRight.runwayID = "27r";
 
-	local.push_back(top);
-	local.push_back(bot);
+	topLeft.coordinates.push_back(-1950);  // x
+	topLeft.coordinates.push_back(685);    // y
+	topLeft.coordinates.push_back(0);	// z
+
+	topRight.coordinates.push_back(1950);	// x
+	topRight.coordinates.push_back(685);		// y
+	topRight.coordinates.push_back(0);		// z
+
+
+	topLeft.heading = 270;				// base heading around the center coordinate
+	topRight.heading = 90;
+	topLeft.available = true;
+	topRight.available = topLeft.available;
+
+	botLeft.runwayID = "9r";
+	botRight.runwayID = "27l";
+	botLeft.coordinates.push_back(-1709); // x
+	botLeft.coordinates.push_back(-685);	// y
+	botLeft.coordinates.push_back(0);	// z
+
+	botLeft.coordinates.push_back(1950);	// x
+	botRight.coordinates.push_back(-685);	// y
+	botRight.coordinates.push_back(0);	// z
+
+	botLeft.heading = 270;				// base heading around the center coordinate
+	botRight.heading = 90;
+	botRight.available = true;
+	botLeft.available = botRight.available;
+
+
+	local.push_back(topLeft);
+	local.push_back(botLeft);
+	local.push_back(topRight);
+	local.push_back(botRight);
 
 	return local;
 }
