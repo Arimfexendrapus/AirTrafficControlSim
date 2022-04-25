@@ -32,6 +32,7 @@ private:
 	vector<int> finalDestination;
 	bool isCleared;
 	bool departing;
+	bool isAborted;
 	runway_ends *Runway;
 
 public:
@@ -68,34 +69,36 @@ public:
 	bool set_clearance(bool clear);
 	bool get_clearance();
 
+	bool abort();
+
 	// contructor
 	airplane();
 	airplane(string fID, aircraft type); // constructor passed flight id
 };
 #endif
 
+bool airplane::abort()
+{
+	isAborted = true;
+}
+
 bool airplane::land(airport Airport)
 {
-	if (altitude <= 3000 && Airport.degree_clearance(heading, Runway->runwayID) == 1)
-	{
-		int distance = 0; /*(distance between aircraft and runway)*/
-		int howLong = 0;  /*distance / speed */
-		int toDecel = 0;  /*distance / aircraft.acceleration[1]*/
-		if (howLong < toDecel)
-			set_speed(0);
+	int distance = 0; /*(distance between aircraft and runway)*/
+	int howLong = 0;  /*distance / speed */
+	int toDecel = 0;  /*distance / aircraft.acceleration[1]*/
+	if (howLong < toDecel)
+		set_speed(0);
 
-		set_course(Runway->endlocation);
-	}
+	set_course(Runway->coordinates);
 }
 
 bool airplane::takeOff(vector<int> Coordinates)
 {
-	if (/*requirements for takeoff are met */)
-	{
-		set_course(Coordinates);
-		set_speed(takeoffSpeed);
-		set_altitude(takeoffAltitude);
-	}
+	set_course(Coordinates);
+	set_speed(takeoffSpeed);
+	set_altitude(takeoffAltitude);
+
 	if (boundForCoordinates == Coordinates)
 		return true;
 	else
@@ -106,7 +109,7 @@ bool airplane::set_speed(double givenSpeed)
 {
 	if (givenSpeed > Aircraft.aircraft_max_speed)
 		return false;
-	while (speed != givenSpeed)
+	while (speed != givenSpeed && isAborted == false)
 	{
 		if (speed > givenSpeed)
 		{
@@ -135,7 +138,7 @@ double airplane::get_speed()
 bool airplane::set_altitude(double givenAltitude)
 {
 
-	while (altitude != givenAltitude)
+	while (altitude != givenAltitude && isAborted == false)
 	{
 		if (altitude > givenAltitude)
 		{
@@ -292,6 +295,7 @@ airplane::airplane()
 	finalDestination = {0, 0, 0};
 	isCleared = false;
 	departing = false;
+	isAborted = false;
 }
 
 airplane::airplane(string fID, aircraft type)
