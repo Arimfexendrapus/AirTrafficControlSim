@@ -12,7 +12,7 @@ struct runway
 		index 0: left side id
 		index 1: right side id
 	*/
-	string runwayID[2];
+	string runwayID;
 	vector<int> startlocation; // left side coordinates
 	vector<int> endlocation;   // right side coordinates
 	int leftHeading;		   // heading coming out from the left

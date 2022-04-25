@@ -29,9 +29,9 @@ public:
     string land_aircraft(string FlightID, string runway);
     string takeoff_aircraft(string FlightID);
     string hold_aircraft(string FlightID, string NavPoint);
-    bool set_aircraft_speed(string FlightID, int Speed);
-    bool wait_aircraft(string FlightID);
-    bool abort_aircraft(string FlightID);
+    string set_aircraft_speed(string FlightID, int Speed);
+    string wait_aircraft(string FlightID);
+    string abort_aircraft(string FlightID);
 };
 #endif
 
@@ -89,4 +89,19 @@ void airspace::generate_airplane()
     }
     // choose a random aircraft type
     TempCraft = AircraftInfo[rdom % 5];
+}
+
+
+string airspace::abort_aircraft(string FlightID){
+
+    airplane* locAirplan = NULL;
+    for(int x=0; x<(int)AirplaneVec.size(); x++){
+        if(FlightID == AirplaneVec[x]->get_flightID()){
+            locAirplan = AirplaneVec[x];
+        }
+    }
+    if(locAirplan == NULL){
+        return "Invalid flight id";
+    }
+    locAirplan->
 }

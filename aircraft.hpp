@@ -58,7 +58,7 @@ vector<aircraft> GetAircraftInfo()
 	// aircraft ac2;
 	// aircraft ac3;
 	ac1.aircraft_name = "Boeing 737-800";
-	ac1.aircraft_acceleration[0] = 1.96;
+	ac1.aircraft_acceleration[0] = 1.96; // m/s
 	ac1.aircraft_acceleration[1] = 1.96;
 	ac1.aircraft_elevation_rate[0] = 15.24;
 	ac1.aircraft_elevation_rate[1] = 5.08;
