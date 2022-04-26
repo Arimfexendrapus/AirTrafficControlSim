@@ -10,6 +10,7 @@
 #include "airplane.hpp"
 #include "aircraft.hpp"
 #include "nav_aid.hpp"
+using namespace std;
 
 class airspace
 {
@@ -35,7 +36,6 @@ public:
     string abort_aircraft(string FlightID);
     int identify_flight(string FlightID);
 };
-
 
 airspace::airspace(vector<airplane *> apVector, airport *aPort)
 {
@@ -113,7 +113,8 @@ string airspace::abort_aircraft(string FlightID)
         AirplaneVec[aircraftLoc]->abort();
         return "abort started";
     }
-    else return "invalid ID";
+    else
+        return "invalid ID";
 }
 
 #endif
