@@ -16,7 +16,7 @@ private:
 	vector<runway_ends> runways; // contains runways
 public:
 	airport(); // constructor
-	bool degree_clearance(int heading, string runwayID);
+	bool degree_clearance(int heading, string runwayID, airplane* Plane);
 	bool runway_availability(string runwayID);
 	runway_ends get_runway(string runwayID);
 	void empty_runway(string runwayID);
@@ -34,21 +34,20 @@ int airport::identify_runway(string runwayID)
 {
 	for (int i = 0; i < runways.size(); i++)
 	{
-		if (runwayID == runways[i].runwayID[0]) return i;
-		if (runwayID == runways[i].runwayID[1]) return i;
+		if (runwayID == runways[i].runwayID) return i;
 	}
 
 	return -1;
 	// if invalid runway name what should we do in this case? or is it already checked
 }
 
-bool airport::degree_clearance(int heading, vector<int> PlaneCoords, string runwayID)
+bool airport::degree_clearance(int heading, string runwayID, airplane* Plane)
 {
 	int i = identify_runway(runwayID);
 
 	int refAngle =
-	abs((180 / pi) * acos((planeCoords[0] - runways[i].Coordinates[0]) // divided by
-	/((planeCoords[0] - runways[i].Coordinates[0])^2 + (planeCoords[1] - runways[i].Coordinates[1])^2)^(1 / 2))); // cos^-1(a/h)
+	abs((180 / pi) * acos((Plane.flightCoordinates[0] - runways[i].Coordinates[0]) // divided by
+	/((Plane.flightCoordinates[0] - runways[i].Coordinates[0])^2 + (Plane.flightCoordinates[1] - runways[i].Coordinates[1])^2)^(1 / 2))); // cos^-1(a/h)
 	if (refAngle <= 30)
 	{
 		if (heading > runways[i].heading - 30)

@@ -25,7 +25,7 @@ struct aircraft
 		REMEMBER acceleration = change in velocity / change in time
 
 	*/
-	float aircraft_acceleration[2];
+	double aircraft_acceleration[2] = { 0,0 };
 
 	/*
 		Units: meters/second
@@ -33,9 +33,9 @@ struct aircraft
 		index 1: descent rate
 		THIS IS IN THE Y COORDINATE PLANE
 	*/
-	float aircraft_elevation_rate[2];
-	int aircraft_max_speed;	   // kilometers per hour
-	int aircraft_max_altitude; // meters
+	double aircraft_elevation_rate[2] = {0,0};
+	int aircraft_max_speed = 0;	   // kilometers per hour
+	int aircraft_max_altitude = 0; // meters
 };
 
 vector<aircraft> GetAircraftInfo()

@@ -88,16 +88,16 @@ bool airplane::land(airport Airport)
 	int howLong = 0;  /*distance / speed */
 	int toDecel = 0;  /*distance / aircraft.acceleration[1]*/
 	if (howLong < toDecel)
-		set_speed(0);
+		this->set_speed(0);
 
-	set_course(Runway->coordinates);
+	this->set_course(Runway->coordinates);
 }
 
 bool airplane::takeOff(vector<int> Coordinates)
 {
-	set_course(Coordinates);
-	set_speed(takeoffSpeed);
-	set_altitude(takeoffAltitude);
+	this->set_course(Coordinates);
+	this->set_speed(takeoffSpeed);
+	this->set_altitude(takeoffAltitude);
 
 	if (boundForCoordinates == Coordinates)
 		return true;
