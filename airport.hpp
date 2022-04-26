@@ -1,5 +1,6 @@
 #ifndef AIRPORT
 #define AIRPORT
+#define _USE_MATH_DEFINES
 
 #include <string>
 #include <vector>
@@ -46,7 +47,7 @@ bool airport::degree_clearance(int heading, string runwayID, airplane* Plane)
 	int i = identify_runway(runwayID);
 
 	int refAngle =
-	abs((180 / pi) * acos((Plane.flightCoordinates[0] - runways[i].Coordinates[0]) // divided by
+	abs((180 / M_PI) * acos((Plane.flightCoordinates[0] - runways[i].Coordinates[0]) // divided by
 	/((Plane.flightCoordinates[0] - runways[i].Coordinates[0])^2 + (Plane.flightCoordinates[1] - runways[i].Coordinates[1])^2)^(1 / 2))); // cos^-1(a/h)
 	if (refAngle <= 30)
 	{
