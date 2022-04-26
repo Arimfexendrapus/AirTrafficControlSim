@@ -35,7 +35,7 @@ public:
     string abort_aircraft(string FlightID);
     int identify_flight(string FlightID);
 };
-#endif
+
 
 airspace::airspace(vector<airplane *> apVector, airport *aPort)
 {
@@ -115,3 +115,5 @@ string airspace::abort_aircraft(string FlightID)
     }
     else return "invalid ID";
 }
+
+#endif

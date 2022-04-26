@@ -9,7 +9,7 @@ struct nav_aid
 	string ID;
 	int coordinates[2];
 };
-#endif
+
 
 vector<nav_aid> getNavAids()
 {
@@ -23,3 +23,5 @@ vector<nav_aid> getNavAids()
 
 	return local;
 }
+
+#endif

@@ -44,7 +44,7 @@ public:
     // Postcondition: any message returned from called methods or any message
     // specifically generate by this method itself
 };
-#endif
+
 
 User_Interface::User_Interface(airspace *as, airplane_report *apr)
 {
@@ -394,3 +394,5 @@ void User_Interface::Parse_Input(string input)
         }
     }
 }
+
+#endif

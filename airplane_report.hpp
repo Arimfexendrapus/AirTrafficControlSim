@@ -17,7 +17,7 @@ public:
     void PrintProgressStrip();
     void PrintDisplayStrip();
 };
-#endif
+
 
 void airplane_report::PrintProgressStrip()
 {
@@ -28,10 +28,10 @@ void airplane_report::PrintProgressStrip()
     for (int i = 0; i > Airplanes.size(); i++)
     {
 
-        int Altitude = Airplanes[i].get_altitude();
+        double Altitude = Airplanes[i].get_altitude();
         if (Airplanes[i].get_intention() == true) {
             //Color = light blue;
-            if (altitude == 0) { //0 in relation to airport 
+            if (Altitude == 0) { //0 in relation to airport 
                 Travel = Airplanes[i].get_runway();
             }
             else {
@@ -43,7 +43,7 @@ void airplane_report::PrintProgressStrip()
         else {
             //Color = "pale yellow";
             Travel = Airplanes[i].get_heading();
-            Destination = "Arrival";
+            //Destination = "Arrival";
         }
             cout << Airplanes[i].get_flightID() << endl;
             cout << Travel << endl;
@@ -68,3 +68,4 @@ void airplane_report::PrintDisplayStrip()
     }
 }
 
+#endif

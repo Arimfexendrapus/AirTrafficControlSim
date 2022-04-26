@@ -60,7 +60,7 @@ public:
 	bool set_coordinates(vector<int> Coordinates);
 	vector<int> get_coordinates();
 
-	bool set_runway(string runwayID, airport Airport);
+	bool set_runway(string runwayID, airport *Airport);
 	string get_runway();
 
 	bool set_flightID(string FlightID);
@@ -75,7 +75,7 @@ public:
 	airplane();
 	airplane(string fID, aircraft type); // constructor passed flight id
 };
-#endif
+
 
 bool airplane::abort()
 {
@@ -239,9 +239,10 @@ vector<int> airplane::get_coordinates()
 	return Coordinates;
 }
 
-bool airplane::set_runway(string runwayID, airport Airport)
+bool airplane::set_runway(string runwayID, airport *Airport)
 {
-	Runway = &Airport.get_runway(runwayID);
+	Runway = &Airport->get_runway(runwayID);
+
 	if (Runway->runwayID == runwayID)
 		return true;
 	else
@@ -319,3 +320,5 @@ airplane::airplane(string fID, aircraft type)
 	departing = false;
 	Runway = NULL;
 }
+
+#endif
