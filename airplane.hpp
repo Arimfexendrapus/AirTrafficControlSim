@@ -80,6 +80,7 @@ public:
 bool airplane::abort()
 {
 	isAborted = true;
+	return true;
 }
 
 bool airplane::land(airport Airport)
@@ -88,16 +89,19 @@ bool airplane::land(airport Airport)
 	int howLong = 0;  /*distance / speed */
 	int toDecel = 0;  /*distance / aircraft.acceleration[1]*/
 	if (howLong < toDecel)
-		this->set_speed(0);
+		set_speed(0);
 
-	this->set_course(Runway->coordinates);
+	set_course(Runway->coordinates);
+	if (boundForCoordinates == flightCoordinates) return true;
+	else return false;
+
 }
 
 bool airplane::takeOff(vector<int> Coordinates)
 {
-	this->set_course(Coordinates);
-	this->set_speed(takeoffSpeed);
-	this->set_altitude(takeoffAltitude);
+	set_course(Coordinates);
+	set_speed(takeoffSpeed);
+	set_altitude(takeoffAltitude);
 
 	if (boundForCoordinates == Coordinates)
 		return true;
