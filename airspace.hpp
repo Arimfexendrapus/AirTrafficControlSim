@@ -25,6 +25,7 @@ private:
 public:
     airspace(vector<airplane *> apVector, airport *aPort);
     void generate_airplane();
+    void simulator();
     string clear_aircraft(string FlightID, string NavPoint, char Directrion);
     string clear_aircraft(string FlightID, int heading, char Directrion);
     string clear_aircraft(string FlightID, int altitude);
