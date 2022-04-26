@@ -20,7 +20,7 @@ public:
 	airport(); // constructor
 	bool degree_clearance(string runwayID, airplane *Plane);
 	bool runway_availability(string runwayID);
-	runway_ends get_runway(string runwayID);
+	runway_ends* get_runway(string runwayID);
 	void empty_runway(string runwayID);
 	void occupy_runway(string runwayID);
 	int identify_runway(string runwayID);
@@ -86,10 +86,10 @@ void airport::occupy_runway(string runway)
 	runways[i].available = false;
 }
 
-runway_ends airport::get_runway(string runway)
+runway_ends* airport::get_runway(string runway)
 {
 	int i = identify_runway(runway);
-	return runways[i];
+	return &runways[i];
 }
 
 #endif

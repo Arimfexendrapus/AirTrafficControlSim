@@ -241,7 +241,7 @@ vector<int> airplane::get_coordinates()
 
 bool airplane::set_runway(string runwayID, airport *Airport)
 {
-	Runway = &Airport->get_runway(runwayID);
+	Runway = Airport->get_runway(runwayID);
 
 	if (Runway->runwayID == runwayID)
 		return true;
