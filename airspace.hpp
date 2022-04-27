@@ -24,28 +24,31 @@ private:
 public:
     airspace(vector<airplane *> apVector, airport *aPort);
     void generate_airplane();
-    //void simulator();
-    //string clear_aircraft(string FlightID, string NavPoint, char Directrion);
-    //string clear_aircraft(string FlightID, int heading, char Directrion);
-    //string clear_aircraft(string FlightID, int altitude);
-    string land_aircraft(string FlightID, string runway, airport* Airport);
+    // void simulator();
+    // string clear_aircraft(string FlightID, string NavPoint, char Directrion);
+    // string clear_aircraft(string FlightID, int heading, char Directrion);
+    // string clear_aircraft(string FlightID, int altitude);
+    string land_aircraft(string FlightID, string runway, airport *Airport);
     string takeoff_aircraft(string FlightID);
-    //string hold_aircraft(string FlightID, string NavPoint);
+    // string hold_aircraft(string FlightID, string NavPoint);
     string set_aircraft_speed(string FlightID, int Speed);
     string wait_aircraft(string FlightID);
     string abort_aircraft(string FlightID);
     int identify_flight(string FlightID);
 };
 
-string airspace::land_aircraft(string FlightID, string runway, airport* Airport)
+string airspace::land_aircraft(string FlightID, string runway, airport *Airport)
 {
     int flightNum = identify_flight(FlightID);
     bool pass = AirplaneVec[flightNum]->set_runway(runway, Airport);
     bool landPass = AirplaneVec[flightNum]->land();
 
-    if (pass && landPass) return "landing sequence started";
-    else if (!pass) return "failed to assign runway";
-    else return "landing failure";
+    if (pass && landPass)
+        return "landing sequence started";
+    else if (!pass)
+        return "failed to assign runway";
+    else
+        return "landing failure";
 }
 
 string airspace::takeoff_aircraft(string FlightID)
@@ -53,8 +56,10 @@ string airspace::takeoff_aircraft(string FlightID)
     int flightNum = identify_flight(FlightID);
     bool pass = AirplaneVec[flightNum]->takeOff();
 
-    if (pass) return "takeoff started";
-    else return "takeoff failure";
+    if (pass)
+        return "takeoff started";
+    else
+        return "takeoff failure";
 }
 
 string airspace::set_aircraft_speed(string FlightID, int Speed)
@@ -68,7 +73,7 @@ string airspace::wait_aircraft(string FlightID)
 {
     int flightNum = identify_flight(FlightID);
 
-    runway_ends* runway = AirplaneVec[flightNum]->get_runway();
+    runway_ends *runway = AirplaneVec[flightNum]->get_runway();
 
     if (runway->available)
     {
@@ -76,9 +81,11 @@ string airspace::wait_aircraft(string FlightID)
         runway->available = false;
         return "airplane is waiting on assigned runway";
     }
-    else "runway is occupied already";
+    else
+    {
+        return "runway is occupied already";
+    }
 }
-
 
 airspace::airspace(vector<airplane *> apVector, airport *aPort)
 {

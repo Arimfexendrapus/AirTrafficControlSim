@@ -3,7 +3,7 @@
 
 #define takeoffSpeed 160
 #define takeoffAltitude 5000
-vector<int> takeoffCoords = { 4000,4000,4000 };
+vector<int> takeoffCoords = {4000, 4000, 4000};
 
 //#include "airspace.h"
 #include "aircraft.hpp"
@@ -62,7 +62,7 @@ public:
 	vector<int> get_coordinates();
 
 	bool set_runway(string runwayID, airport *Airport);
-	runway_ends* get_runway();
+	runway_ends *get_runway();
 
 	bool set_flightID(string FlightID);
 	string get_flightID();
@@ -76,7 +76,6 @@ public:
 	airplane();
 	airplane(string fID, aircraft type); // constructor passed flight id
 };
-
 
 bool airplane::abort()
 {
@@ -93,9 +92,10 @@ bool airplane::land()
 		set_speed(0);
 
 	set_course(Runway->coordinates);
-	if (boundForCoordinates == flightCoordinates) return true;
-	else return false;
-
+	if (boundForCoordinates == flightCoordinates)
+		return true;
+	else
+		return false;
 }
 
 bool airplane::takeOff()
@@ -254,7 +254,7 @@ bool airplane::set_runway(string runwayID, airport *Airport)
 		return false;
 }
 
-runway_ends* airplane::get_runway()
+runway_ends *airplane::get_runway()
 {
 	return Runway;
 }
