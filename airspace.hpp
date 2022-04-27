@@ -1,7 +1,6 @@
 #ifndef AIRSPACE
 #define AIRSPACE
 
-// airspace class pseudo code
 #include <vector>
 #include <string>
 #include <random>
@@ -25,18 +24,41 @@ private:
 public:
     airspace(vector<airplane *> apVector, airport *aPort);
     void generate_airplane();
-    void simulator();
-    string clear_aircraft(string FlightID, string NavPoint, char Directrion);
-    string clear_aircraft(string FlightID, int heading, char Directrion);
-    string clear_aircraft(string FlightID, int altitude);
-    string land_aircraft(string FlightID, string runway);
-    string takeoff_aircraft(string FlightID);
-    string hold_aircraft(string FlightID, string NavPoint);
+    //void simulator();
+    //string clear_aircraft(string FlightID, string NavPoint, char Directrion);
+    //string clear_aircraft(string FlightID, int heading, char Directrion);
+    //string clear_aircraft(string FlightID, int altitude);
+    //string land_aircraft(string FlightID, string runway);
+    //string takeoff_aircraft(string FlightID);
+    //string hold_aircraft(string FlightID, string NavPoint);
     string set_aircraft_speed(string FlightID, int Speed);
     string wait_aircraft(string FlightID);
     string abort_aircraft(string FlightID);
     int identify_flight(string FlightID);
 };
+
+string airspace::set_aircraft_speed(string FlightID, int Speed)
+{
+    int flightNum = identify_flight(FlightID);
+    AirplaneVec[i]->set_speed(Speed);
+    return "speed adjusting started";
+}
+
+string airspace::wait_aircraft(string FlightID)
+{
+    int flightNum = identify_flight(FlightID);
+
+    runway_ends* runway = AirplaneVec[i]->get_runway();
+
+    if (runway->available)
+    {
+        AirplaneVec[i]->set_coordinates(runway->coordinates);
+        runway->available = false;
+        return "airplane is waiting on assigned runway";
+    }
+    else "runway is occupied already";
+}
+
 
 airspace::airspace(vector<airplane *> apVector, airport *aPort)
 {

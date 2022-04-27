@@ -61,7 +61,7 @@ public:
 	vector<int> get_coordinates();
 
 	bool set_runway(string runwayID, airport *Airport);
-	string get_runway();
+	runway_ends* get_runway();
 
 	bool set_flightID(string FlightID);
 	string get_flightID();
@@ -253,9 +253,9 @@ bool airplane::set_runway(string runwayID, airport *Airport)
 		return false;
 }
 
-string airplane::get_runway()
+runway_ends* airplane::get_runway()
 {
-	return Runway->runwayID;
+	return &Runway;
 }
 
 bool airplane::set_flightID(string FlightID)
