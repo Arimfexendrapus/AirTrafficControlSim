@@ -7,7 +7,7 @@
 struct nav_aid
 {
 	string ID;
-	int coordinates[2];
+	vector<int> coordinates = {0,0,0};
 };
 
 
@@ -17,8 +17,9 @@ vector<nav_aid> getNavAids()
 
 	nav_aid navA;
 	navA.ID = "daisy";
-	navA.coordinates[0] = 30000; // x
-	navA.coordinates[1] = 12000; // y
+	navA.coordinates.push_back(30000); // x
+	navA.coordinates.push_back(12000); // y
+	navA.coordinates.push_back(6000);  // z
 	local.push_back(navA);
 
 	return local;

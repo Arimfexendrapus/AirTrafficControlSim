@@ -25,14 +25,14 @@ void airplane_report::PrintProgressStrip()
     vector<int> Destination;
     //string Color;
 
-    for (int i = 0; i > Airplanes.size(); i++)
+    for (int i = 0; i < Airplanes.size(); i++)
     {
 
         double Altitude = Airplanes[i].get_altitude();
         if (Airplanes[i].get_intention() == true) {
             //Color = light blue;
             if (Altitude == 0) { //0 in relation to airport 
-                Travel = Airplanes[i].get_runway();
+                Travel = Airplanes[i].get_runway()->runwayID;
             }
             else {
                 Travel = Airplanes[i].get_heading();
