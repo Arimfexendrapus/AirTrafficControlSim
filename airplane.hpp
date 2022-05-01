@@ -85,13 +85,23 @@ bool airplane::abort()
 
 bool airplane::land()
 {
-	int distance = 0; /*(distance between aircraft and runway)*/
-	int howLong = 0;  /*distance / speed */
-	int toDecel = 0;  /*distance / aircraft.acceleration[1]*/
-	if (howLong < toDecel)
-		set_speed(0);
-
 	set_course(Runway->coordinates);
+	while (1)
+	{
+		double distance = sqrt(pow((flightCoordinates[0] - Runway->coordinates[0]), 2) +
+			pow((flightCoordinates[1] - Runway->coordinates[1]), 2) + pow((flightCoordinates[2] - Runway->coordinates[0]), 2));
+		/*(distance between aircraft and runway)*/
+		double howLong = distance / speed;  /*distance / speed */
+		double toDecel = distance / Aircraft.aircraft_acceleration[1];  /*distance / aircraft.acceleration[1]*/
+		if (howLong < toDecel)
+		{
+			set_speed(0);
+			break;
+		}
+	}
+	
+
+	
 	if (boundForCoordinates == flightCoordinates)
 		return true;
 	else
