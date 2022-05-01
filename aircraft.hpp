@@ -55,8 +55,6 @@ vector<aircraft> GetAircraftInfo()
 
 */
 	aircraft ac1;
-	// aircraft ac2;
-	// aircraft ac3;
 	ac1.aircraft_name = "Boeing 737-800";
 	ac1.aircraft_acceleration[0] = 1.96; // m/s
 	ac1.aircraft_acceleration[1] = 1.96;
@@ -64,6 +62,46 @@ vector<aircraft> GetAircraftInfo()
 	ac1.aircraft_elevation_rate[1] = 5.08;
 	ac1.aircraft_max_speed = 946;	   // kmh
 	ac1.aircraft_max_altitude = 12496; // meters
+	aircraftHold.push_back(ac1);
+
+	aircraft ac1;
+	ac1.aircraft_name = "Airbus A320";
+	ac1.aircraft_acceleration[0] = 1.45; // m/s
+	ac1.aircraft_acceleration[1] = 1.45;
+	ac1.aircraft_elevation_rate[0] = 15.24;
+	ac1.aircraft_elevation_rate[1] = 5.08;
+	ac1.aircraft_max_speed = 864;	   // kmh
+	ac1.aircraft_max_altitude = 11887; // meters
+	aircraftHold.push_back(ac1);
+
+	aircraft ac1;
+	ac1.aircraft_name = "Boeing 757-200";
+	ac1.aircraft_acceleration[0] = 1.96; // m/s
+	ac1.aircraft_acceleration[1] = 1.96;
+	ac1.aircraft_elevation_rate[0] = 15.24;
+	ac1.aircraft_elevation_rate[1] = 5.08;
+	ac1.aircraft_max_speed = 982;	   // kmh
+	ac1.aircraft_max_altitude = 12801; // meters
+	aircraftHold.push_back(ac1);
+
+	aircraft ac1;
+	ac1.aircraft_name = "Bell 206 JetRanger";
+	ac1.aircraft_acceleration[0] = 1.03; // m/s
+	ac1.aircraft_acceleration[1] = 1.03;
+	ac1.aircraft_elevation_rate[0] = 6.71;
+	ac1.aircraft_elevation_rate[1] = 6.71;
+	ac1.aircraft_max_speed = 225;	   // kmh
+	ac1.aircraft_max_altitude = 6096; // meters
+	aircraftHold.push_back(ac1);
+
+	aircraft ac1;
+	ac1.aircraft_name = "Robinson R44";
+	ac1.aircraft_acceleration[0] = 1.03; // m/s
+	ac1.aircraft_acceleration[1] = 1.03;
+	ac1.aircraft_elevation_rate[0] = 6.71;
+	ac1.aircraft_elevation_rate[1] = 6.71;
+	ac1.aircraft_max_speed = 240;	   // kmh
+	ac1.aircraft_max_altitude = 4267; // meters
 	aircraftHold.push_back(ac1);
 
 	return aircraftHold;
