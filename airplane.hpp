@@ -98,6 +98,7 @@ bool airplane::land()
 			set_speed(0);
 			break;
 		}
+		Sleep(1000);
 	}
 	
 
